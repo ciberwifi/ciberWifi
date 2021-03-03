@@ -2,38 +2,44 @@
 
 require("base.php");
 
- $dni= htmlspecialchars($_POST['imptDni']);
+$arrayDatos=array();
+
+$fecha=date('d-m-y');
+ $dni= htmlspecialchars($_POST['imptdni']);
+ $motivo=htmlspecialchars($_POST['selectmotivo']);
+ $estabilizador="no";
+ $observaciones=htmlspecialchars($_POST['observaciones']);
+
+
+  if (isset($_POST['chkestb'])){
+  $estabilizador="si";
+  }
 
 $cliente=buscarCliente($dni);
 
+
+if($cliente!==-1){
+array_push($arrayDatos, trim($fecha));
+array_push($arrayDatos, trim($dni));
+array_push($arrayDatos, trim($motivo));
+array_push($arrayDatos, trim($estabilizador));
+array_push($arrayDatos, trim($observaciones));
+array_push($arrayDatos, trim("abierto"));
+
+
+grabarEnTablaReclamos($arrayDatos);
+
+echo "Alta reclamo generada con exito ". $cliente->getip()." ".$cliente->getapellido()." ".$cliente->getnombre();
+
+ }else{
+
+  echo "El cliente selecionado no existe";
+
+ }
+
+
+         
+ 
 ?>
 
-<h4>Cliente</h4>
 
-<span class="border-bottom"></span>
-
-      <div class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th>IP</th>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>direccion</th>
-              <th>Plan</th>
-              <th>Mensual</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td> <?php echo $cliente->getip();?> </td>
-              <td><?php echo $cliente->getnombre();?></td>
-              <td><?php echo $cliente->getapellido();?></td>
-              <td><?php echo $cliente->getdireccion();?></td>
-              <td><?php echo $cliente->getplan();?></td>
-              <td><?php echo "$". $cliente->getmonto();?></td>
-            </tr>
-          <tr>
-          </tbody>
-        </table>
-      </div>

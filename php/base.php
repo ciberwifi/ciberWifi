@@ -4,6 +4,7 @@
  require("clases/base/Reclamo.php");
 
  $urlBD="Z:/redes.bas/baseDatos/";
+ 
 
  
 
@@ -15,23 +16,26 @@ function buscarCliente($dni){
  $arrayBusqueda=array();
  array_push($arrayBusqueda, trim($dni));
  $vecCliente=buscarEnTabla($tablaClientes,$arrayBusqueda, $pos);
+ if(count($vecCliente) > 0 ){
  $cliente=new Cliente($vecCliente);
-
  return($cliente);
-
+}else{
+ return(-1);
+	}
 	}
 
 function grabarEnTabla($tabla, $array){
 
 	$linea="";
 	foreach($array as $dato ){
-			 $linea=linea$.trim($dato).",";
+			 $linea=$linea.trim($dato).",";
 				}
+
 
 	 if($archivo = fopen($tabla, "a"))
     {
-        fwrite($tabla, trim($linea). "\r\n");
-        fclose($tabla);
+        fwrite($archivo, trim($linea). "\r\n");
+        fclose($archivo);
     }
 
 	}
@@ -72,5 +76,32 @@ $cant=count($array);
 	}	
 	
 
+
+
+
+function grabarEnTablaReclamos($array){
+
+	$tablaReclamos="Z:/redes.bas/baseDatos/"."tablas/reclamos/tablaReclamos".date('m')."-".date('y').".csv";
+
+	grabarEnTabla($tablaReclamos, $array);
+
+}
+
+function leertablaReclamos(){
+
+	$tablaReclamos="Z:/redes.bas/baseDatos/"."tablas/reclamos/tablaReclamos".date('m')."-".date('y').".csv";
+
+
+	$vecTabla=file($tablaReclamos);
+	$arrayDatos=array();
+	 
+	 foreach($vecTabla as $linea ) {
+		$dato = explode(",", $linea);
+		$reclamo=new Reclamo($dato);
+		array_push($arrayDatos, $reclamo);
+     }
+
+     return($arrayDatos);
+}
 
 ?>

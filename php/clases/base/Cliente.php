@@ -73,4 +73,23 @@ public function getmonto()
 {
 return $this->monto;
 }
+
+
+public function getallatributes()
+{
+
+	$arrayDatos=array();
+	array_push($arrayDatos, $this->getzona());
+	array_push($arrayDatos, $this->getip());
+	array_push($arrayDatos, $this->getnombre());
+	array_push($arrayDatos, $this->getapellido());
+	array_push($arrayDatos, $this->getdireccion());
+	array_push($arrayDatos, $this->getplan());
+	array_push($arrayDatos, $this->getmonto());
+
+
+return $this->monto;
+}
+
+
   }
