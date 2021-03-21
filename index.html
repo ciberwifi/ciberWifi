@@ -27,10 +27,12 @@
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  
+
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto" >
       <li class="nav-item active">
         <a class="nav-link" href="#">Clientes <span class="sr-only"></span></a>
       </li>
@@ -54,18 +56,32 @@
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
               <li><a class="dropdown-item" id="btnnuevoreclamo" href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo Reclamo</a>
               </li>
-              <li><a class="dropdown-item" id="btndiagnosticos" href="#">Diagnosticos</a></li>
+              <li><a class="dropdown-item" id="btnreclamos" href="#">Reclamos Ingresados</a></li>
+              <li><a class="dropdown-item" id="btnverdiagnosticos" href="#">Diagnosticos</a></li>
               <li><a class="dropdown-item" href="#">Visitas Tecnicas</a></li>
+            </ul>
+
+
+<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Inbox</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li><a class="dropdown-item" id="" href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo Mensaje</a>
+              </li>
+              <li><a class="dropdown-item" id="" href="#">Ver Mensajes</a></li>
+              
             </ul>
 
      </ul>
   
 
      <form id="formBuscar" class="container">
-          <input id="imptDni" name="imptDni" class="form-control" type="text" placeholder="IP o DNI" aria-label="Search">
+          <input id="imptDni" name="imptDni" class="form-control" type="Search" placeholder="IP o DNI" aria-label="Search">
           
         </form>
          <button id="btnBuscar" name="btnBuscar" type="button" class="btn btn-success">Buscar</button>
+
+
+
 </div>
 </div>
 </nav>
@@ -95,7 +111,20 @@
       $.post(loadUrl, data ,function(result) { 
          $("#resultado").html(result);
       });
-      });  
+      }); 
+
+
+     $("#imptDni").keypress(function(e) {
+    if(e.which == 13) {
+      e.preventDefault();
+      var loadUrl = "php/resultado.php"; // paso parametro accion e id
+      var data = $("#formBuscar").serialize();
+
+      $.post(loadUrl, data ,function(result) { 
+         $("#resultado").html(result);
+      });
+    }
+  });
 
 
 
@@ -105,11 +134,19 @@
       $("#resultado").load(loadUrl); // ejecuto
       }); 
 
- $("#btndiagnosticos").click(function(){
+ $("#btnreclamos").click(function(){
+
+      var loadUrl = "php/reclamosPendientes.php"; // paso parametro accion e id
+      $("#resultado").load(loadUrl); // ejecuto
+      });
+
+
+ $("#btnverdiagnosticos").click(function(){
 
       var loadUrl = "php/diagnosticos.php"; // paso parametro accion e id
       $("#resultado").load(loadUrl); // ejecuto
       });
+
 
 }); 
 

@@ -1,12 +1,12 @@
 
 
- <div class="modal fade" id="modaldiagnostico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="modalCr" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   
-   <form id="formdiagnostico" class="container">
+   <form id="formCerrarReclamo" class="container">
  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Diagnostico</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cerrar Reclamo</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -15,34 +15,16 @@
      <input id="imptdni" name="imptdni" type="text" class="form-control" placeholder="12.154" aria-label="Username" aria-describedby="basic-addon1">
         </div>
 
-        <div class="input-group "  style="margin-bottom: 20px;">
-        <select id="selectmotivo" name="selectmotivo" class="form-select" aria-label="Default select example">
-          <option selected>Motivo de la Falla</option>
-          <option value="Infraestructura">Infraestructura </option>
-          <option value="Instalacion Cliente">Instalacion Cliente</option>
-          <option value="Otros">Otros</option>
-          
-          
-        </select>
-
-        </div>
 
 <div class="form-check" style="margin-bottom: 20px;">
-  <input class="form-check-input" type="checkbox" value="" id="chkvt"  name="chkvt">
-  <label id="chkvt" name="chkvt" class="form-check-label" for="flexCheckDefault">
-  Se Determino Visita Tecnica
-  </label>
-</div>
-
-<div class="form-check" style="margin-bottom: 20px;">
-  <input class="form-check-input" type="checkbox" value=""id="chkmonitoreo" name="chkmonitoreo">
-  <label id="chkmonitoreo" name="chkmonitoreo" class="form-check-label" for="flexCheckDefault">
-  En Monitoreo
+  <input class="form-check-input" type="checkbox" value=""id="chkresuelto" name="chkresuelto">
+  <label  class="form-check-label" for="flexCheckDefault">
+  Se Considera Resuelto
   </label>
 </div>
 
 <div class="input-group">
-  <span class="input-group-text">Observaciones</span>
+  <span class="input-group-text">Detalle</span>
   <textarea class="form-control" aria-label="With textarea" name="observaciones"></textarea>
 </div>
       </div>
@@ -81,14 +63,14 @@
 
     $( document ).ready(function() {
 
-         $('#modaldiagnostico').modal('show');
+         $('#modalCr').modal('show');
 
        
 
 
          $("#btnguardar").click(function(){
 
-      var loadUrl = "php/altadiagnostico.php";// paso parametro accion e id
+      var loadUrl = "php/cerrarReclamo.php";// paso parametro accion e id
       var data = $("#formdiagnostico").serialize();
 
       $.post(loadUrl, data ,function(result) { 
