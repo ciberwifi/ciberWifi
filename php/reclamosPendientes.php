@@ -11,9 +11,9 @@ $arrayDatos=leertablaReclamos();
 
 ?>
 
-<h4 style="margin-bottom: 30px;">Reclamos Pendientes</h4>
+<h4 style="margin-bottom: 30px;">Reclamos Pendientes
 
-
+              </h4>
 
 <span class="border-bottom"></span>
 
@@ -40,12 +40,7 @@ $arrayDatos=leertablaReclamos();
               <td><?php echo $dato->getestabilizador();?></td>
               <td><?php echo $dato->getobservaciones();?></td>
               <td><?php echo $dato->getestado();?></td>
-              <td>
-                <button type="button" class="btn btn-primary" id="btndiagnosticos"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Diagnosticar </button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-primary" id="btncerrarticket"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Cerrar Ticket</button>
-              </td>
+             
               </tr>
             <?php
               }
@@ -65,6 +60,17 @@ $arrayDatos=leertablaReclamos();
       </div>
 
 
+
+ <td>
+                <button type="button" class="btn btn-primary" id="btndiagnosticos"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Diagnosticar </button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary" id="btncerrarticket"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Cerrar Ticket</button>
+              </td>
+                   <td>
+                <button type="button" class="btn btn-primary" id="btnhistorial"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Historial</button>
+              </td>
+              
 <script>
 
     $.ajaxSetup ({  
