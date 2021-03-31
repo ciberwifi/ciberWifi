@@ -9,6 +9,7 @@ Class Diagnostico {
 	private $motivo;
 	private $visitaTecnica;
 	private $monitoreo;
+    private $datosInstal;
 	private $observaciones;
 	private $estado;
 	
@@ -22,7 +23,8 @@ public function __construct($dato) {
 		 $this->motivo=$dato[2];
 		 $this->visitaTecnica=$dato[3];
 		 $this->monitoreo=$dato[4];
-		 $this->observaciones=$dato[5];
+		 $this->datosInstal=$dato[5];
+		 $this->observaciones=$dato[6];
 	
 	
   }	
@@ -59,6 +61,11 @@ return $this->monitoreo;
 public function getobservaciones()
 {
 return $this->observaciones;
+}
+
+public function getdatosInstal()
+{
+return $this->datosInstal;
 }
 
   }

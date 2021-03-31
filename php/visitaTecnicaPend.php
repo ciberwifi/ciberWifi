@@ -6,12 +6,12 @@ require("base.php");
 
 $arrayDatos=array();
 
-$arrayDatos=leertablaReclamos();
+$arrayDatos=leertablaVt();
 
 
 ?>
 
-<h4 style="margin-bottom: 30px;">Reclamos Pendientes
+<h4 style="margin-bottom: 30px;">Vs Pendientes
 
               </h4>
 
@@ -21,26 +21,26 @@ $arrayDatos=leertablaReclamos();
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th>Fecha</th>
+             
               <th>IP</th>
+              <th>Datos Conexion</th>
               <th>Motivo</th>
-              <th>Tiene estabilizador</th>
-              <th>Datos operador</th>
-               <th>Estado</th>
-                <th></th>
+              <th>Observaciones</th>
+             
+               <th>Fecha Programada</th>
+               
             </tr>
           </thead>
           <tbody>
             <tr>
               <?php foreach($arrayDatos as $dato ) {
               ?>
-              <td> <?php echo $dato->getfecha();?> </td>
+              
               <td><?php echo $dato->getip();?></td>
+              <td><?php echo $dato->getdatosInstal();?></td>
               <td><?php echo $dato->getmotivo();?></td>
-              <td><?php echo $dato->getestabilizador();?></td>
               <td><?php echo $dato->getobservaciones();?></td>
-              <td><?php echo $dato->getestado();?></td>
-             
+              <td> <?php echo $dato->getfecha();?> </td>
               </tr>
             <?php
               }
@@ -62,12 +62,9 @@ $arrayDatos=leertablaReclamos();
 
 
  <td>
-                <button type="button" class="btn btn-primary" id="btndiagnosticos"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Diagnosticar </button>
+                <button type="button" class="btn btn-primary" id="btndiagnosticos"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Asignar Fecha </button>
               </td>
-              <td>
-                <button type="button" class="btn btn-primary" id="btncerrarticket"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Cerrar Ticket</button>
-              </td>
-              
+         
 <script>
 
     $.ajaxSetup ({  

@@ -58,7 +58,7 @@
               </li>
               <li><a class="dropdown-item" id="btnreclamos" href="#">Reclamos Ingresados</a></li>
               <li><a class="dropdown-item" id="btnverdiagnosticos" href="#">Diagnosticos</a></li>
-              <li><a class="dropdown-item" href="#">Visitas Tecnicas</a></li>
+              <li><a class="dropdown-item" id="btnvt" href="#">Visitas Tecnicas</a></li>
             </ul>
 
 
@@ -147,6 +147,11 @@
       $("#resultado").load(loadUrl); // ejecuto
       });
 
+ $("#btnvt").click(function(){
+
+      var loadUrl = "php/visitaTecnicaPend.php"; // paso parametro accion e id
+      $("#resultado").load(loadUrl); // ejecuto
+      });
 
 }); 
 

@@ -3,6 +3,7 @@
  require("clases/base/Cliente.php");
  require("clases/base/Reclamo.php");
  require("clases/base/Diagnostico.php");
+require("clases/base/VisitaTecnica.php");
 
  $urlBD="Z:/redes.bas/baseDatos/";
  
@@ -97,6 +98,15 @@ function grabarEnTablaDiagnosticos($array){
 
 }
 
+function grabarEnTablaVT($array){
+
+	$tablaVtecnica="Z:/redes.bas/baseDatos/"."tablas/reclamos/tablaVtecnica".date('m')."-".date('y').".csv";
+
+	grabarEnTabla($tablaVtecnica, $array);
+
+}
+
+
 function leertablaReclamos(){
 
 	$tablaReclamos="Z:/redes.bas/baseDatos/"."tablas/reclamos/tablaReclamos".date('m')."-".date('y').".csv";
@@ -130,6 +140,24 @@ function leertablaDiagnosticos(){
 
      return($arrayDatos);
 }
+
+function leertablaVt(){
+
+	$tablavt="Z:/redes.bas/baseDatos/"."tablas/reclamos/tablaVtecnica".date('m')."-".date('y').".csv";
+
+
+	$vecTabla=file($tablavt);
+	$arrayDatos=array();
+	 
+	 foreach($vecTabla as $linea ) {
+		$dato = explode(",", $linea);
+		$vt=new VisitaTecnica($dato);
+		array_push($arrayDatos, $vt);
+     }
+
+     return($arrayDatos);
+}
+
 
 
 ?>

@@ -85,13 +85,6 @@ $arrayDatos=leertablaReclamos();
       $("#resultado3").load(loadUrl); // ejecuto
       }); 
 
-    $("#btnhistorial").click(function(){
-
-      var loadUrl = "html/reclamos.html"; // paso parametro accion e id
-      $("#resultado3").load(loadUrl); // ejecuto
-      }); 
-
-
   }); 
 
 </script>

@@ -1,7 +1,7 @@
 <?php
 
 
-Class Diagnostico {
+Class VisitaTecnica {
     // Declaración de una propiedad
   
     private $ip;

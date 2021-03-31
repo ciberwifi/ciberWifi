@@ -26,6 +26,7 @@ $arrayDatos=leertablaDiagnosticos();
               <th>Motivo Falla</th>
               <th>Revision en Domicilio</th>
               <th>En Monitoreo</th>
+              <th>Datos Conexion</th>
               <th>Datos operador</th>
              
                 <th></th>
@@ -40,6 +41,7 @@ $arrayDatos=leertablaDiagnosticos();
               <td><?php echo $dato->getmotivo();?></td>
               <td><?php echo $dato->getmonitoreo();?></td>
               <td><?php echo $dato->getvisitaTecnica();?></td>
+               <td><?php echo $dato->getdatosInstal();?></td>
               <td><?php echo $dato->getobservaciones();?></td>
           
                  </tr>

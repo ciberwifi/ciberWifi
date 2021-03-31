@@ -6,10 +6,8 @@ $arrayDatos=array();
 
 $fecha=date('d-m-y');
  $dni= htmlspecialchars($_POST['imptdni']);
- $motivo=htmlspecialchars($_POST['selectmotivo']);
- $monitoreo="no";
- $visitatecnica="no";
- $observaciones=htmlspecialchars($_POST['observaciones']);
+ $resuelto="no";
+ $detalle=htmlspecialchars($_POST['observaciones']);
 
 
   if (isset($_POST['chkvt'])){
