@@ -41,6 +41,14 @@
       </li>
 
 <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Ventas</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li><a class="dropdown-item" id="btnnuevainstal" href="#">Nuevo Pedido</a></li>
+              <li><a class="dropdown-item" href="#">instalaciones Pendientes</a></li>
+              
+            </ul>
+
+<li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Cobranzas</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
               <li><a class="dropdown-item" id="btndisputas" href="#">Disputas</a></li>
@@ -76,10 +84,10 @@
 
      <form id="formBuscar" class="container">
           <input id="imptDni" name="imptDni" class="form-control" type="Search" placeholder="IP o DNI" aria-label="Search">
-          
-        </form>
-         <button id="btnBuscar" name="btnBuscar" type="button" class="btn btn-success">Buscar</button>
+           
 
+        </form>
+          <button id="btnBuscar" name="btnBuscar" type="button" class="btn btn-success">Buscar</button>
 
 
 </div>
@@ -94,6 +102,7 @@
 </div>
 
 
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 
@@ -152,6 +161,14 @@
       var loadUrl = "php/visitaTecnicaPend.php"; // paso parametro accion e id
       $("#resultado").load(loadUrl); // ejecuto
       });
+
+  $("#btnnuevainstal").click(function(){
+
+      var loadUrl = "html/nuevaInstal.html";
+      $("#resultado").load(loadUrl); // ejecuto
+      });
+
+
 
 }); 
 

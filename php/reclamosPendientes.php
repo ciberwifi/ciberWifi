@@ -70,6 +70,13 @@ $arrayDatos=leertablaReclamos();
                    <td>
                 <button type="button" class="btn btn-primary" id="btnhistorial"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Historial</button>
               </td>
+
+
+   <div id="resultado4" class="container" style="margin-top: 20px;" >
+
+
+   
+      </div>           
               
 <script>
 
@@ -87,8 +94,8 @@ $arrayDatos=leertablaReclamos();
 
     $("#btnhistorial").click(function(){
 
-      var loadUrl = "html/reclamos.html"; // paso parametro accion e id
-      $("#resultado3").load(loadUrl); // ejecuto
+      var loadUrl = "php/reclamosHistorial.php"; // paso parametro accion e id
+      $("#resultado4").load(loadUrl); // ejecuto
       }); 
 
 

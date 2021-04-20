@@ -6,12 +6,12 @@ require("base.php");
 
 $arrayDatos=array();
 
-$arrayDatos=leertablaReclamos();
+$arrayDatos=leertablaReclamosHistorial();
 
 
 ?>
 
-<h4 style="margin-bottom: 30px;">Reclamos Pendientes
+<h4 style="margin-bottom: 30px;">Historial Reclamos Diagnosticados
 
               </h4>
 
@@ -62,14 +62,7 @@ $arrayDatos=leertablaReclamos();
 
 
  <td>
-                <button type="button" class="btn btn-primary" id="btndiagnosticos"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Diagnosticar </button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-primary" id="btncerrarticket"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Cerrar Ticket</button>
-              </td>
-                   <td>
-                <button type="button" class="btn btn-primary" id="btnhistorial"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Historial</button>
-              </td>
+             
               
 <script>
 

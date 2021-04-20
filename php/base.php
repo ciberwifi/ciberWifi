@@ -124,6 +124,23 @@ function leertablaReclamos(){
      return($arrayDatos);
 }
 
+function leertablaReclamosHistorial(){
+
+	$tablaReclamos="Z:/redes.bas/baseDatos/"."tablas/reclamos/tablaReclamosHistorial".date('m')."-".date('y').".csv";
+
+
+	$vecTabla=file($tablaReclamos);
+	$arrayDatos=array();
+	 
+	 foreach($vecTabla as $linea ) {
+		$dato = explode(",", $linea);
+		$reclamo=new Reclamo($dato);
+		array_push($arrayDatos, $reclamo);
+     }
+
+     return($arrayDatos);
+}
+
 function leertablaDiagnosticos(){
 
 	$tablaDiagnosticos="Z:/redes.bas/baseDatos/"."tablas/reclamos/tablaDiagnosticos".date('m')."-".date('y').".csv";
