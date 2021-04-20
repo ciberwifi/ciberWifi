@@ -1,0 +1,6 @@
+
+composer install
+composer update
+"php doctrine.php"
+"vendor/bin/doctrine.bat" orm:schema-tool:create
+"vendor/bin/doctrine.bat" orm:schema-tool:update --force --dump-sql
