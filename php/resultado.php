@@ -1,11 +1,23 @@
 
 <?php
 
-require("base.php");
 
- $dni= htmlspecialchars($_POST['imptDni']);
 
-$cliente=buscarCliente($dni);
+require_once "../bootstrap.php";
+require_once "../Model/Cliente.php";
+
+
+ $id= htmlspecialchars($_POST['imptDni']);
+
+$cliente = $entityManager->findBy('Cliente', $id);
+
+
+if ($cliente === null) {
+    echo "No product found.\n";
+    exit(1);
+}
+
+
 
 ?>
 
@@ -18,8 +30,7 @@ $cliente=buscarCliente($dni);
           <thead>
             <tr>
               <th>IP</th>
-              <th>Nombre</th>
-              <th>Apellido</th>
+              <th>Apellido y Nombre</th>
               <th>direccion</th>
               <th>Plan</th>
               <th>Mensual</th>
@@ -27,12 +38,10 @@ $cliente=buscarCliente($dni);
           </thead>
           <tbody>
             <tr>
-              <td> <?php echo $cliente->getip();?> </td>
-              <td><?php echo $cliente->getnombre();?></td>
-              <td><?php echo $cliente->getapellido();?></td>
+              <td> <?php echo $cliente->getidip();?> </td>
+              <td><?php echo $cliente->getapellidoynombre();?></td>
               <td><?php echo $cliente->getdireccion();?></td>
-              <td><?php echo $cliente->getplan();?></td>
-              <td><?php echo "$". $cliente->getmonto();?></td>
+              
             </tr>
           <tr>
           </tbody>

@@ -1,5 +1,16 @@
 <?php
 
+// create_product.php <name>
+//require_once "../bootstrap.php";
+
+//require_once "Cliente.php";
+
+
+
+
+
+
+
 $clientes="clientes.csv";
 
 $arch= file($clientes);
@@ -59,12 +70,32 @@ foreach($arch as $linea ) {
 			}
 			$tarjetas2=implode(" ", $tarjetasCli);
 			$tarjetasCli2=str_replace(array(" ","  ","   "), " ",$tarjetas2);
-			
+
+
+
+$cliente = new Cliente();
+$apellidynombre=trim($apellido." ".$nombre);
+
+$cliente->setzona($z[0]);
+$cliente->setapellidoynombre($apellidynombre);
+$cliente->setdni($dni);
+$cliente->settel($celAux);
+$cliente->setdireccion($dir);
+$cliente->setemail($email);
+$cliente->setmediospago($tarjetasCli2);
+//$cliente->setfechaAlta($fechaAlta);
+$cliente->setidip($ip);
+//$cliente->setidconexion($conexion);
+
+$entityManager->persist($cliente);
+$entityManager->flush();
+
+//$entityManager->clear(;
+
 	 echo $ai.",".$z[0].",".$ip.",".$apellido.",".$nombre.",".$celAux.",".$dir.",".$dni.",".$email.",".$tarjetasCli2.",".$fechaAlta.",".$importeMensual.",".$plan.",".$venc;
 	
 
-	$ai=$ai+1;
-	
+
 	}
 
 

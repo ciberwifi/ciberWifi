@@ -3,7 +3,9 @@
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-include("Plan.php");
+require  "Conexion.php";
+require  "Plan.php";
+require "Ticket.php";
 /**
  * @ORM\Entity
  * @ORM\Table(name="clientes")
@@ -48,32 +50,41 @@ Class Cliente {
 	private $mediosPago;
 
 	/**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
 	private $fechaAlta;
 	/**
-     * @ORM\OneToOne(targetEntity="Plan")
+
+     * @ORM\OneToOne(targetEntity="Plan" , cascade={"persist", "remove"} )
      */
 	private $idplan;
 
 	/**
-     *@ORM\OneToOne(targetEntity="Conexion")
+     *@ORM\OneToOne(targetEntity="Conexion", cascade={"persist", "remove"})
      */
 	private $idConexion;
 
 	 /**
      
-     * @ORM\OneToMany(targetEntity="Ticket", mappedBy="cliente")
+     * @ORM\OneToMany(targetEntity="Ticket", cascade={"persist", "remove"} , mappedBy="cliente")
      */
     private $tickets;
 	
+    
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $idip;
+
     // Declaración de un método
+
 
 
  public function __construct() {
         $this->tickets = new ArrayCollection();
-        $this->
-        $this->Conexion= new Conexion();
+       $this->idConexion= new Conexion();
+        $this->idplan= new Plan();
     }
 
 public function getzona()
@@ -116,6 +127,10 @@ public function getfechaAlta()
 return $this->fechaAlta;
 }
 
+public function getidip()
+{
+return $this->idip;
+}
 	
 public function setzona($zona)
 {
@@ -156,6 +171,14 @@ public function setfechaAlta($fechaAlta)
 {
 $this->fechaAlta=$fechaAlta;
 }
+public function setidip($idip)
+{
+$this->idip=$idip;
+}
 
+public function setidconexion($conexion)
+{
+$this->idConexion=$conexion;
+}
 
   }

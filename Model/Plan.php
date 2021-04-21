@@ -17,11 +17,11 @@ Class Plan {
      */
     protected $id;
 	/**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      */
     private $descripcion;
     /**
-     * @ORM\Column(type="decimal")
+     * @ORM\Column(type="decimal",nullable=true)
      */
 	private $monto;
     

@@ -1,6 +1,7 @@
 <?php
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -18,24 +19,25 @@ Class Conexion {
     protected $id;
 
 	/**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
+
      */
     private $ip;
 	/**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
 	private $usuario;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $contrasenia;
 	/**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $equipos;
     
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $altura;
     
