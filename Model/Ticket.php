@@ -2,6 +2,8 @@
 
 use Doctrine\ORM\Mapping as ORM;
 
+
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="tickets")
@@ -43,7 +45,7 @@ Class Ticket {
     
      /**
      
-     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="tickets")
+     * @ORM\ManyToOne(targetEntity="\Cliente", cascade={"persist", "remove"},inversedBy="tickets")
      * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id")
      */
     private $cliente;
@@ -84,7 +86,12 @@ public function setestado($estado)
 $this->estado=$estado;
 }
 	
-	
+
+public function setcliente($cliente)
+{
+$this->cliente=$cliente;
+}
+    	
 	
 public function getfecha()
 {

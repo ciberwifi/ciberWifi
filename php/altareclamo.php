@@ -1,36 +1,40 @@
 <?php
 
-require("base.php");
+require_once "../bootstrap.php";
+require_once "../Model/Cliente.php";
+require_once "../Model/Ticket.php";
 
-$arrayDatos=array();
-
-$fecha=date('d-m-y');
+ $fecha=date('d-m-y');
  $dni= htmlspecialchars($_POST['imptdni']);
  $motivo=htmlspecialchars($_POST['selectmotivo']);
- $estabilizador="no";
+ //$estabilizador="no";
  $observaciones=htmlspecialchars($_POST['observaciones']);
 
 
-  if (isset($_POST['chkestb'])){
-  $estabilizador="si";
-  }
-
-$cliente=buscarCliente($dni);
+ 
+$cliente = $entityManager->getRepository('Cliente')->findOneBy(array('idip' => $dni));
 
 
-if($cliente!==-1){
-array_push($arrayDatos, trim($fecha));
-array_push($arrayDatos, trim($dni));
-array_push($arrayDatos, trim($motivo));
-array_push($arrayDatos, trim($estabilizador));
-array_push($arrayDatos, trim($observaciones));
-array_push($arrayDatos, trim("abierto"));
+
+if($cliente!==null){
+
+$ticket=new Ticket();
+$cliente->addticket($ticket);
 
 
-grabarEnTablaReclamos($arrayDatos);
+$ticket->setfecha($fecha);
+$ticket->setip($dni);
+$ticket->setmotivo($motivo);
+$ticket->setobservaciones($observaciones);
+$ticket->setestado("pendiente");
 
-echo "Alta reclamo generada con exito ". $cliente->getip()." ".$cliente->getapellido()." ".$cliente->getnombre();
 
+
+$entityManager->persist($ticket);
+$entityManager->flush();
+
+
+echo "Alta reclamo generada con exito ". $cliente->getidip()." ".$cliente->getapellidoynombre()." ".sizeof($cliente->getalltickets());
  }else{
 
   echo "El cliente selecionado no existe";

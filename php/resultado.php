@@ -5,6 +5,8 @@
 
 require_once "../bootstrap.php";
 require_once "../Model/Cliente.php";
+require_once "../Model/Ticket.php";
+
 
 
  $dni= htmlspecialchars($_POST['imptDni']);
@@ -58,7 +60,10 @@ if (sizeof($clientes) === 0) {
 
 
 
+
 ?>
+
+
 
 <h4>Clientes</h4>
 
@@ -102,10 +107,60 @@ if (sizeof($clientes) === 0) {
       </div>
 
 
+<?php
+
+if (sizeof($clientes) === 1) {
+    $tickets = $cliente->getalltickets();
+    $cantTickets=sizeof($tickets);
+} 
+
+if($cantTickets>0){
+
+
+?>
+
+  <h5>Tickets Ingresados</h5>
+
+  <span class="border-bottom"></span>
+  <div class="table-responsive">
+        <table class="table table-striped table-sm">
+        
+           <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>IP</th>
+              <th>Motivo</th>
+              <th>Observaciones</th>
+              <th>Estado</th>
+         
+              
+            </tr>
+          </thead>
+
+            <tbody>
+            <tr>
+              <?php foreach($tickets as $dato ) {
+              ?>
+              <td> <?php echo $dato->getfecha();?> </td>
+              <td><?php echo $dato->getip();?></td>
+              <td><?php echo $dato->getmotivo();?></td>
+           
+              <td><?php echo $dato->getobservaciones();?></td>
+              <td><?php echo $dato->getestado();?></td>
+             
+              </tr>
+            <?php
+              }
+              ?>
+
+       
+          <tr>
+          </tbody>
+        </table>
+      </div>
 
 
 
-
-
-   
-
+  <?php
+              }
+              ?>

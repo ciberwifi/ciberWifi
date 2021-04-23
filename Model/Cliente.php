@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 require  "Conexion.php";
 require  "Plan.php";
-require "Ticket.php";
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="clientes")
@@ -66,7 +66,7 @@ Class Cliente {
 
 	 /**
      
-     * @ORM\OneToMany(targetEntity="Ticket", cascade={"persist", "remove"} , mappedBy="cliente")
+     * @ORM\OneToMany(targetEntity="\Ticket", cascade={"persist", "remove"} , mappedBy="cliente")
      */
     private $tickets;
 	
@@ -87,6 +87,10 @@ Class Cliente {
         $this->idplan= new Plan();
     }
 
+public function getid()
+{
+return $this->id;
+}
 public function getzona()
 {
 return $this->zona;
@@ -180,5 +184,18 @@ public function setidconexion($conexion)
 {
 $this->idConexion=$conexion;
 }
+
+public function addticket($ticket)
+{
+$this->tickets->add($ticket);
+$ticket->setcliente($this);
+
+}
+public function getalltickets()
+{
+return $this->tickets;
+
+}
+
 
   }

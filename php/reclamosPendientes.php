@@ -1,12 +1,17 @@
 
 <?php
 
-require("base.php");
 
+require_once "../bootstrap.php";
+require_once "../Model/Ticket.php";
+require_once "../Model/Cliente.php";
+/*
+$tickets=array();
+$query = $entityManager->createQuery('SELECT t FROM Ticket t WHERE t.id = 9');
+$tickets = $query->getResult();
+*/
 
-$arrayDatos=array();
-
-$arrayDatos=leertablaReclamos();
+$tickets = $entityManager->getRepository('Ticket')->findall();
 
 
 ?>
@@ -24,7 +29,8 @@ $arrayDatos=leertablaReclamos();
               <th>Fecha</th>
               <th>IP</th>
               <th>Motivo</th>
-              <th>Tiene estabilizador</th>
+            
+
               <th>Datos operador</th>
                <th>Estado</th>
                 <th></th>
@@ -32,12 +38,12 @@ $arrayDatos=leertablaReclamos();
           </thead>
           <tbody>
             <tr>
-              <?php foreach($arrayDatos as $dato ) {
+              <?php foreach($tickets as $dato ) {
               ?>
               <td> <?php echo $dato->getfecha();?> </td>
               <td><?php echo $dato->getip();?></td>
               <td><?php echo $dato->getmotivo();?></td>
-              <td><?php echo $dato->getestabilizador();?></td>
+           
               <td><?php echo $dato->getobservaciones();?></td>
               <td><?php echo $dato->getestado();?></td>
              

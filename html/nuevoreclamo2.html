@@ -6,7 +6,7 @@
  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nuevo Reclamo</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Nuevo Ticket</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -15,9 +15,20 @@
      <input id="imptdni" name="imptdni" type="text" class="form-control" placeholder="12.154" aria-label="Username" aria-describedby="basic-addon1">
         </div>
 
-    
-          <div id="fallareportada" class="input-group "  style=" margin-bottom: 20px;">
-        <select id="selectmotivo" name="selectmotivo" class="form-select" aria-label="Default select example">
+        <div class="input-group "  style="margin-bottom: 20px;">
+        <select id="motivoticket" name="motivoticket" class="form-select" aria-label="Default select example">
+          <option selected>Motivo del Ticket</option>
+          <option value="Soporte Tecnico">Soporte Tecnico </option>
+          <option value="Cobranzas">Cobranzas</option>
+          <option value="Cambio Plan">Cambio PLan</option>
+          <option value="Otros">Otros</option>
+          
+        </select>
+
+        </div>
+
+          <div id="fallareportada" class="input-group "  style="display: none; margin-bottom: 20px;">
+        <select id="selectmotivo" name="motivost" class="form-select" aria-label="Default select example">
           <option selected>Falla Reportada</option>
           <option value="Sin servicio">Sin servicio </option>
           <option value="Cortes">Cortes</option>
@@ -74,7 +85,11 @@
          $('#modalreclamo').modal('show');
 
 
-       
+        $("#motivoticket").change(function(){
+          if(this.value=="Soporte Tecnico") $("#fallareportada").show();
+
+        
+      });
     
 
          $("#btnguardar").click(function(){
