@@ -44,7 +44,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Ventas</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
               <li><a class="dropdown-item" id="btnnuevainstal" href="#">Nuevo Pedido</a></li>
-              <li><a class="dropdown-item" href="#">instalaciones Pendientes</a></li>
+              <li><a class="dropdown-item" id="btnslinstal" href="#">Solicitudes Ingresadas</a></li>
               
             </ul>
 
@@ -168,6 +168,11 @@
       $("#resultado").load(loadUrl); // ejecuto
       });
 
+ $("#btnslinstal").click(function(){
+
+      var loadUrl = "php/solicitudesInstalacion.php";
+      $("#resultado").load(loadUrl); // ejecuto
+      });
 
 
 }); 

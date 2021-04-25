@@ -29,8 +29,6 @@ $tickets = $entityManager->getRepository('Ticket')->findall();
               <th>Fecha</th>
               <th>IP</th>
               <th>Motivo</th>
-            
-
               <th>Datos operador</th>
                <th>Estado</th>
                 <th></th>

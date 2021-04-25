@@ -16,10 +16,12 @@
      <span class="input-group-text" id="basic-addon1">Zona</span>
      <input id="impzona" name="impzona" type="text" class="form-control" placeholder="Lafe" aria-label="Username" aria-describedby="basic-addon1">
         </div>
-        
-  <div class="input-group mb-3">
-     <span class="input-group-text" id="basic-addon1">Apellido y Nombre</span>
-     <input id="impapellidoynombre" name="impapellidoynombre" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" >
+
+         <div class="input-group mb-3">
+     <span class="input-group-text" id="basic-addon1">Nombre</span>
+     <input id="impnombre" name="impnombre" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
+       <span class="input-group-text" id="basic-addon1">Apellido</span>
+     <input id="impapellido" name="impapellido" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
         </div>
 
          
@@ -91,17 +93,18 @@
 
          $('#modalsolicitudinstalacion').modal('show');
 
+       
 
- $("#btnguardar").click(function(){
+
+         $("#btnguardar").click(function(){
 
       var loadUrl = "php/altaSolicitudInstalacion.php";// paso parametro accion e id
-      var data = $("#formsolinstal").serializeArray();
-        data.push({name: "id", value: -1});
+      var data = $("#formsolinstal").serialize();
 
-      $.post(loadUrl, $.param(data) ,function(result) { 
+      $.post(loadUrl, data ,function(result) { 
          $("#resultado2").html(result);
       });
-  });  
+      });  
 
 
 

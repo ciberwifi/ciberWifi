@@ -4,10 +4,10 @@ require_once "../bootstrap.php";
 require_once "../Model/Cliente.php";
 require_once "../Model/Ticket.php";
 
- $fecha=date('d-m-y');
+ $fecha=date('Y-m-d');
+ 
  $dni= htmlspecialchars($_POST['imptdni']);
  $motivo=htmlspecialchars($_POST['selectmotivo']);
- //$estabilizador="no";
  $observaciones=htmlspecialchars($_POST['observaciones']);
 
 
