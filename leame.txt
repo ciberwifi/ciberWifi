@@ -1,6 +1,13 @@
-
 composer install
 composer update
 "php doctrine.php"
 "vendor/bin/doctrine.bat" orm:schema-tool:create
 "vendor/bin/doctrine.bat" orm:schema-tool:update --force --dump-sql
+
+OBjetivos de Version
+
+V1 Alcances 
+-Busqueda cliente por Ip dni direccion apellido y/o nombre OK
+-ABM Ventas OK -- menos eliminar solicitud , historial , cambio de estado
+-ABM Soporte -Nuevo Reclamo , Reclamos Ingresados , Diagnosticos , Visitas Tecnicas
+-Inbox 

@@ -91,7 +91,12 @@ public function setcliente($cliente)
 {
 $this->cliente=$cliente;
 }
-    	
+
+    public function getid()
+{
+return $this->id;
+}
+	
 	
 public function getfecha()
 {

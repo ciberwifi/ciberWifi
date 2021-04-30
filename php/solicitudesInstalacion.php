@@ -16,10 +16,9 @@ require_once "../Model/Instalacion.php";
 
 </style>
 
-<h4 style="margin-bottom: 30px;">Solicitudes Instalacion </h4>
+<h4 style="margin-bottom: 20px;">Solicitudes Instalacion </h4>
+           
 
-  
-              
 <span class="border-bottom"></span>
 
       <div class="tabla table-responsive">
@@ -73,27 +72,37 @@ require_once "../Model/Instalacion.php";
       </div>
 
 
-               <td>
-                <button type="button" class="btn btn-success" id="btnnuevainsta"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Nueva Solicitud </button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-success" id="btneditar"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Editar </button>
-              </td>
-              <td>
-                
-                <button type="button" class="btn btn-success" id="btncerrarticket"  data-bs-toggle="modal" data-bs-target="#exampleModal" disabled >Eliminar</button>
-              </td>
-                   <td>
-                <button type="button" class="btn btn-success" id="btnhistorial"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Historial</button>
-              </td>
-
 
    <div id="resultado4" class="container" style="margin-top: 20px;" >
 
 
    
-      </div>           
-              
+      </div>      
+
+
+               <td>
+                <button type="button" class="btn btn-success btn-sm" id="btnnuevainsta"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Nueva Solicitud </button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-success btn-sm" id="btneditar"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Editar </button>
+              </td>
+              <td>
+
+            
+                <td>
+                <button type="button" class="btn btn-success btn-sm" id="btnaprobarsolicitud"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Aprobar Solicitud</button>
+              </td>
+               <td>
+                <button type="button" class="btn btn-success btn-sm" id="btnhistorial"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Asignar Fecha</button>
+              </td>
+                <td>
+                <button type="button" class="btn btn-success btn-sm" id="btnhistorial"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Historial</button>
+              </td>
+                  
+                <button  type="button" class="btn btn-success btn-sm" id="btncerrarticket"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Eliminar</button>
+              </td>
+
+             
 <script>
 
     $.ajaxSetup ({  
@@ -104,7 +113,6 @@ require_once "../Model/Instalacion.php";
 
 //var tabla2 =null;
 
-//tabla2 = $('#thetable').dataTable();
 
   
 // paso parametro accion e id

@@ -1,0 +1,82 @@
+
+
+ <div class="modal fade" id="modalnuevoinbox" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  
+   <form id="formsolinstal" class="container">
+ <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nuevo Mensaje</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+       
+     <div class="modal-body">
+         <div class="input-group mb-3">
+     <span class="input-group-text" id="basic-addon1">Destinatario</span>
+     <input id="impzona" name="impzona" type="text" class="form-control" placeholder="Lafe" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        
+
+<div class="input-group">
+  <span class="input-group-text">Mensaje</span>
+  <textarea class="form-control" aria-label="With textarea" name="observaciones"></textarea>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="btnguardar" name="btnguardar">Guardar</button>
+        <div id="resultado2" class="container" style="margin-top: 20px;" ></div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+    </form>
+
+
+
+
+
+   
+
+
+
+</div>
+
+
+
+
+
+
+
+<script>
+
+    $.ajaxSetup ({  
+        cache: false  
+         });
+
+    $( document ).ready(function() {
+
+         $('#modalnuevoinbox').modal('show');
+
+
+ $("#btnguardar").click(function(){
+
+      var loadUrl = "php/altaSolicitudInstalacion.php";// paso parametro accion e id
+      var data = $("#formsolinstal").serializeArray();
+        data.push({name: "id", value: -1});
+
+      $.post(loadUrl, $.param(data) ,function(result) { 
+         $("#resultado2").html(result);
+      });
+  });  
+
+
+
+}); 
+
+</script>

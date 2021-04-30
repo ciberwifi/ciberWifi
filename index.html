@@ -73,9 +73,9 @@
 <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Inbox</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" id="" href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo Mensaje</a>
+              <li><a class="dropdown-item" id="btnnuevoinbox" href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo Mensaje</a>
               </li>
-              <li><a class="dropdown-item" id="" href="#">Ver Mensajes</a></li>
+              <li><a class="dropdown-item" id="btnverinbox" href="#">Ver Mensajes</a></li>
               
             </ul>
 
@@ -174,8 +174,22 @@
       $("#resultado").load(loadUrl); // ejecuto
       });
 
+$("#btnnuevoinbox").click(function(){
+
+      var loadUrl = "html/nuevoinbox.html";
+      $("#resultado").load(loadUrl); // ejecuto
+      });
+
+
+    $("#btnverinbox").click(function(){
+
+      var loadUrl = "php/inboxresultado.php";
+      $("#resultado").load(loadUrl); // ejecuto
+      });
 
 }); 
+
+
 
 </script>
 

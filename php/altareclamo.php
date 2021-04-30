@@ -6,13 +6,16 @@ require_once "../Model/Ticket.php";
 
  $fecha=date('Y-m-d');
  
+
+echo $id=htmlspecialchars($_POST['id']);
  $dni= htmlspecialchars($_POST['imptdni']);
  $motivo=htmlspecialchars($_POST['selectmotivo']);
  $observaciones=htmlspecialchars($_POST['observaciones']);
 
 
- 
-$cliente = $entityManager->getRepository('Cliente')->findOneBy(array('idip' => $dni));
+ $cliente=null;
+//$cliente = $entityManager->getRepository('Cliente')->findOneBy(array('idip' => $dni));
+ $ticket=$entityManager->getRepository('Ticket')->findOneBy(array('id' => $id));
 
 
 
