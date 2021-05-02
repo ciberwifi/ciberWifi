@@ -125,4 +125,9 @@ public function getestado()
 return $this->estado;
 }
 
+public function getcliente()
+{
+return $this->cliente;
+}
+
   }

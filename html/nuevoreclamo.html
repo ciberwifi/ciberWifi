@@ -32,7 +32,7 @@
 
 
 <div class="input-group">
-  <span class="input-group-text">Detalle</span>
+  <span class="input-group-text">Datos Operador</span>
   <textarea class="form-control" aria-label="With textarea" name="observaciones"></textarea>
 </div>
       </div>
@@ -81,7 +81,7 @@
 
       var loadUrl = "php/altareclamo.php";// paso parametro accion e id
       var data = $("#formreclamo").serialize();
-
+      data.push({name: "id", value: -1});
       $.post(loadUrl, data ,function(result) { 
          $("#resultado2").html(result);
       });

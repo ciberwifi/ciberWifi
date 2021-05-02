@@ -115,9 +115,6 @@ $instalacion = $entityManager->getRepository('Instalacion')->findOneBy(array('id
 
          $('#modalsolicitudinstalacion').modal('show');
 
-          
-
-
          $("#btnguardar").click(function(){
 
       var loadUrl = "php/altaSolicitudInstalacion.php";// paso parametro accion e id

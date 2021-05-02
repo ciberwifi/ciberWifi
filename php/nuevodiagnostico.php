@@ -1,4 +1,24 @@
 
+<?php
+require_once "../bootstrap.php";
+require_once "../Model/Ticket.php";
+
+
+
+$id= htmlspecialchars($_POST['id']);
+
+
+
+$ticket = $entityManager->getRepository('Ticket')->findOneBy(array('id' => $id));
+
+
+
+?>
+
+<script>
+   // Guardar la sesion php en js
+   localStorage.setItem("id", "<?php echo $id; ?>");       
+</script>
 
  <div class="modal fade" id="modaldiagnostico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   

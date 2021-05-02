@@ -109,11 +109,6 @@ require_once "../Model/Cliente.php";
       $("#resultado3").load(loadUrl); // ejecuto
       }); 
 
-   $("#btndiagnosticos").click(function(){
-
-      var loadUrl = "html/nuevodiagnostico.html"; // paso parametro accion e id
-      $("#resultado3").load(loadUrl); // ejecuto
-      }); 
 
     $("#btnhistorial").click(function(){
 
@@ -136,6 +131,18 @@ require_once "../Model/Cliente.php";
             $(".tabla").html(html);
              });
         });
+
+          $("#btndiagnosticos").one('click',function(){
+
+      var loadUrl = "php/nuevodiagnostico.php"; // paso parametro accion e id
+       var data= { 'id' : row };
+          $.post(loadUrl, data ,function(result) { 
+          $("#resultado3").html(result);
+         });
+       // ejecuto
+      }); 
+
+
   }); 
 
 
