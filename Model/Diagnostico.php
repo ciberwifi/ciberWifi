@@ -1,8 +1,9 @@
 <?php
 
 use Doctrine\ORM\Mapping as ORM;
-
-
+use Doctrine\Common\Collections\ArrayCollection;
+require_once "VisitaTecnica.php";
+require_once "Ticket.php";
 
 /**
  * @ORM\Entity
@@ -20,10 +21,18 @@ Class Diagnostico {
      */
     protected $id;
 
+     /**
+     * @ORM\Column(type="string")
+     */
+    private $fecha;  
+
+
    /**
      * @ORM\Column(type="string")
      */
-	private $motivofalla;  
+
+
+	private $motivo;  
 
 	   /**
      
@@ -34,6 +43,12 @@ Class Diagnostico {
      * @ORM\Column(type="boolean")
      */
 	private $monitoreo;
+
+
+        /**
+     *@ORM\OneToOne(targetEntity="ticket", cascade={"persist", "remove"})
+     */
+    private $ticket;
 	   /**
      * @ORM\Column(type="string")
      */
@@ -49,10 +64,14 @@ Class Diagnostico {
 
     
     
-
-public function setmotivofalla($motivofalla)
+public function setfecha($fecha)
 {
- $this->motivofalla=$motivofalla;
+ $this->fecha=$fecha;
+}
+
+public function setmotivo($motivo)
+{
+ $this->motivo=$motivo;
 }
 
 public function setmonitoreo($monitoreo)
@@ -65,6 +84,12 @@ public function setobservaciones($observaciones)
 {
  $this->observaciones=$observaciones;
 }
+    
+
+public function setticket($ticket)
+{
+ $this->ticket=$ticket;
+}
 
 
 
@@ -72,17 +97,38 @@ public function getid()
 {
 return $this->id;
 }
-	
-	
-public function getmotivofalla()
+public function getfecha()
 {
-return $this->motivofalla;
+return $this->fecha;
 }
+	
+	
+public function getmotivo()
+{
+return $this->motivo;
+}
+
+public function getmonitoreo()
+{
+
+    if($this->monitoreo){
+    $monitoreo="SI";
+    }else{
+    $monitoreo="NO";
+    }
+return $monitoreo;
+}
+
 
 
 public function getobservaciones()
 {
 return $this->observaciones;
+}
+
+public function getticket()
+{
+ return $this->ticket;
 }
 
 
@@ -97,5 +143,7 @@ public function getallvisitas()
 return $this->visitas;
 
 }
+
+
 
   }

@@ -112,7 +112,6 @@ if (sizeof($clientes) === 0) {
 if (sizeof($clientes) === 1) {
     $tickets = $cliente->getalltickets();
     $cantTickets=sizeof($tickets);
-} 
 
 if($cantTickets>0){
 
@@ -163,4 +162,6 @@ if($cantTickets>0){
 
   <?php
               }
+              } 
+
               ?>

@@ -27,16 +27,26 @@ Class VisitaTecnica {
      */
     private $diagnostico;
 	/**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
 	private $resultado;
 
 
 	/**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
 	private $fecha;  
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $hora;  
+
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $estado;
 	
 
 public function getid()
@@ -59,6 +69,15 @@ public function getfecha()
 return $this->fecha;
 }
 
+public function gethora()
+{
+return $this->hora;
+}
+
+public function getestado()
+{
+return $this->estado;
+}
 
 public function setdiagnostico($diagnostico)
 {
@@ -70,9 +89,18 @@ public function setresultado($resultado)
 $this->resultado=$resultado;
 }
 
-public function setfecha()
+public function setfecha($fecha)
 {
-$this->fecha;
+$this->fecha=$fecha;
+}
+public function sethora($hora)
+{
+$this->hora=$hora;
+}
+
+public function setestado($estado)
+{
+$this->estado=$estado;
 }
 
   }

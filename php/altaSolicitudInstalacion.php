@@ -3,7 +3,7 @@
 require_once "../bootstrap.php";
 require_once "../Model/Instalacion.php";
 
- $fecha=date('d-m-y');
+ $fecha=date('Y-m-d');
 
 $id=htmlspecialchars($_POST['id']);
  $zona= htmlspecialchars($_POST['impzona']);
@@ -13,15 +13,15 @@ $id=htmlspecialchars($_POST['id']);
  $direccion=htmlspecialchars($_POST['impdireccion']);
  $observaciones=htmlspecialchars($_POST['observaciones']);
 
-if($id===-1){
+if($id<0){
 	$instalacion= new Instalacion();
-	$instalacion->setfecha(new \DateTime($fecha));
+	$instalacion->setfecha($fecha);
 	$instalacion->setestado("pendiente");
 	
 
 }
 
-if($id!==-1)$instalacion = $entityManager->getRepository('Instalacion')->findOneBy(array('id' => $id));
+if($id>0)$instalacion = $entityManager->getRepository('Instalacion')->findOneBy(array('id' => $id));
 
 $instalacion->setzona($zona);
 $instalacion->setapellidoynombre($apellidoynombre);
@@ -31,7 +31,7 @@ $instalacion->setdireccion($direccion);
 $instalacion->setobservaciones($observaciones);
 
 
-if($id===-1)$entityManager->persist($instalacion);
+if($id<0)$entityManager->persist($instalacion);
 
 $entityManager->flush();
 

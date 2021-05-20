@@ -1,8 +1,8 @@
 <?php
 
 use Doctrine\ORM\Mapping as ORM;
-
-
+require_once "Cliente.php";
+require_once "Diagnostico.php";
 
 /**
  * @ORM\Entity
@@ -37,8 +37,12 @@ Class Ticket {
      * @ORM\Column(type="string")
      */
 	private $observaciones;
+       /**
+     * @ORM\Column(type="string",  nullable=true)
+     */
+    private $respuesta;
    /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
 	private $estado;
 	
@@ -49,6 +53,12 @@ Class Ticket {
      * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id")
      */
     private $cliente;
+
+
+        /**
+     *@ORM\OneToOne(targetEntity="diagnostico", cascade={"persist", "remove"})
+     */
+    private $diagnostico;
     // Declaración de un método
 
 	
@@ -80,6 +90,12 @@ public function setobservaciones($observaciones)
 {
  $this->observaciones=$observaciones;
 }
+
+public function setrespuesta($respuesta)
+{
+ $this->respuesta=$respuesta;
+}
+
 
 public function setestado($estado)
 {
@@ -120,6 +136,13 @@ public function getobservaciones()
 {
 return $this->observaciones;
 }
+
+public function getrespuesta()
+{
+ return $this->respuesta;
+}
+
+
 public function getestado()
 {
 return $this->estado;
@@ -129,5 +152,16 @@ public function getcliente()
 {
 return $this->cliente;
 }
+
+public function getdiagnostico()
+{
+ return $this->diagnostico;
+}
+
+public function setdiagnostico($diagnostico)
+{
+ $this->diagnostico=$diagnostico;
+}
+
 
   }

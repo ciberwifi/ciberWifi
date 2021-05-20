@@ -9,13 +9,11 @@ require_once "../Model/Ticket.php";
 
 $id=htmlspecialchars($_POST['id']);
 $observaciones=htmlspecialchars($_POST['observaciones']);
-
-
-if($id===-1){
+ 
+if($id<0){
 
  $dni= htmlspecialchars($_POST['imptdni']);
  $motivo=htmlspecialchars($_POST['selectmotivo']);
- $observaciones=htmlspecialchars($_POST['observaciones']);
  $cliente = $entityManager->getRepository('Cliente')->findOneBy(array('idip' => $dni));
 
 	if($cliente!==null){
@@ -33,10 +31,13 @@ if($id===-1){
 		}
 }
 
-if($id!==-1){
+if($id>0){
+
 	$ticket=$entityManager->getRepository('Ticket')->findOneBy(array('id' => $id));
 	$ticket->setobservaciones($observaciones);
-	$cliente = $entityManager->getRepository('Cliente')->findOneBy(array('id' => $ticket->getcliente()));
+	$idcliente=$ticket->getcliente();
+	$cliente = $entityManager->getRepository('Cliente')->findOneBy(array('id' => $idcliente ));
+	
 	}
 
 

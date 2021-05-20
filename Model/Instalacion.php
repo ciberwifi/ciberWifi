@@ -63,9 +63,9 @@ return $this->id;
 
 public function getfecha()
 {
-return $this->fecha->format('Y-m-d');
-}
+return $this->fecha->format('y-m-d');
     	
+}
 
 public function getzona()
 {
@@ -162,9 +162,15 @@ $this->estado=$estado;
 }
 
 public function setfecha($fecha)
+
 {
- $this->fecha=$fecha;
-}       
+
+$fechaArray=explode("-", $fecha);   
+$this->fecha = new DateTime();
+$this->fecha->setDate($fechaArray[0], $fechaArray[1],$fechaArray[2]);
+}  
+
+
 
   public function close()
     {

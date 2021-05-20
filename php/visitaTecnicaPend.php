@@ -1,46 +1,65 @@
 
 <?php
 
-require("base.php");
+require_once "../bootstrap.php";
+require_once "../Model/Ticket.php";
+require_once "../Model/Diagnostico.php";
 
 
-$arrayDatos=array();
 
-$arrayDatos=leertablaVt();
 
 
 ?>
+<style>
 
-<h4 style="margin-bottom: 30px;">Vs Pendientes
+  table tr:hover {
+  background-color: #CBD1D8;
+ 
+  cursor: pointer;
+}
+
+</style>
+
+<h4 style="margin-bottom: 30px;">Visitas Tecnicas
 
               </h4>
+
+<?php
+$visitas = $entityManager->getRepository('VisitaTecnica')->findall();
+
+?>              
 
 <span class="border-bottom"></span>
 
       <div class="table-responsive">
-        <table class="table table-striped table-sm">
+        <table id="tablavisitastecnicas" class="table table-striped table-sm">
           <thead>
             <tr>
-             
-              <th>IP</th>
-              <th>Datos Conexion</th>
-              <th>Motivo</th>
-              <th>Observaciones</th>
-             
-               <th>Fecha Programada</th>
+              <th style="visibility: hidden;">Id</th>
+              <th>Fecha Reclamo</th>
+              <th>Zona</th>
+              <th>Ip</th>
+              <th>Apellido</th>
+              <th>Reclamo</th>
+              <th>Diagnostico</th>
+              <th>Estado</th>
+              <th>Fecha Programada</th>
                
             </tr>
           </thead>
           <tbody>
             <tr>
-              <?php foreach($arrayDatos as $dato ) {
+              <?php foreach($visitas as $dato ) {
               ?>
-              
-              <td><?php echo $dato->getip();?></td>
-              <td><?php echo $dato->getdatosInstal();?></td>
-              <td><?php echo $dato->getmotivo();?></td>
-              <td><?php echo $dato->getobservaciones();?></td>
-              <td> <?php echo $dato->getfecha();?> </td>
+               <td style="visibility: hidden;"> <?php echo $dato->getdiagnostico()->getid();?></td>
+              <td><?php echo $dato->getdiagnostico()->getticket()->getfecha();?></td>
+              <td><?php echo $dato->getdiagnostico()->getticket()->getcliente()->getzona();?></td>
+               <td><?php echo $dato->getdiagnostico()->getticket()->getip();?></td>
+              <td><?php echo $dato->getdiagnostico()->getticket()->getcliente()->getapellidoynombre();?></td>
+              <td><?php echo $dato->getdiagnostico()->getticket()->getmotivo();?></td>
+              <td><?php echo $dato->getdiagnostico()->getmotivo();?></td>
+              <td><?php echo $dato->getestado();?></td>
+              <td> <?php echo $dato->getfecha()." ".$dato->gethora();?> </td>
               </tr>
             <?php
               }
@@ -62,7 +81,7 @@ $arrayDatos=leertablaVt();
 
 
  <td>
-                <button type="button" class="btn btn-primary" id="btndiagnosticos"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Asignar Fecha </button>
+                <button type="button" class="btn btn-success btn-sm" id="btnasignarfechavt"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Asignar Fecha </button>
               </td>
          
 <script>
@@ -73,11 +92,47 @@ $arrayDatos=leertablaVt();
     $( document ).ready(function() {
 
 
-   $("#btndiagnosticos").click(function(){
 
-      var loadUrl = "html/nuevodiagnostico.html"; // paso parametro accion e id
-      $("#resultado3").load(loadUrl); // ejecuto
-      }); 
+
+ $('#tablavisitastecnicas').find('tr').click(function(){
+   var row = $(this).find('td:first').text();
+  
+
+
+       $("#btnasignarfechavt").one('click',function(){
+       var loadUrl = "php/editarvt.php";
+        var data= { 'id' : row };
+          $.post(loadUrl, data ,function(result) { 
+          $("#resultado3").html(result);
+         });
+          
+        });
+
+
+
+  }); 
+
+
+ var ultimaFila = null;
+        var colorOriginal;
+        var fondooriginal;
+        $(Inicializar);
+        function Inicializar() {
+            $('#tablavisitastecnicas tr').click(function () {
+                if (ultimaFila != null) {
+                    ultimaFila.css('background-color', colorOriginal)
+                    ultimaFila.css('color', fondooriginal)
+                }
+                colorOriginal = 'white';
+                fondooriginal = $(this).css('color');
+                $(this).css('background-color','#297D18');
+                  $(this).css('color','white');
+                ultimaFila = $(this);
+            });
+        }
+
+
+
 
   }); 
 
