@@ -111,7 +111,7 @@
 
    $("#btnBuscar").click(function(){
 
-      var loadUrl = "php/resultado.php"; // paso parametro accion e id
+      var loadUrl = "php/Tablas/resultadoBusquedaCliente.php"; // paso parametro accion e id
       var data = $("#formBuscar").serialize();
 
       $.post(loadUrl, data ,function(result) { 
@@ -123,7 +123,7 @@
      $("#imptDni").keypress(function(e) {
     if(e.which == 13) {
       e.preventDefault();
-      var loadUrl = "php/resultado.php"; // paso parametro accion e id
+      var loadUrl ="php/Tablas/resultadoBusquedaCliente.php"; // paso parametro accion e id
       var data = $("#formBuscar").serialize();
 
       $.post(loadUrl, data ,function(result) { 
@@ -142,14 +142,14 @@
 
  $("#btnreclamos").click(function(){
 
-      var loadUrl = "php/reclamosPendientes.php"; // paso parametro accion e id
+      var loadUrl = "php/Tablas/resultadoReclamos.php"; // paso parametro accion e id
       $("#resultado").load(loadUrl); // ejecuto
       });
 
 
  $("#btnverdiagnosticos").click(function(){
 
-      var loadUrl = "php/diagnosticos.php"; // paso parametro accion e id
+      var loadUrl = "php/ABM/Soporte/Diagnostico/tablaDiagnosticos.php"; // paso parametro accion e id
       $("#resultado").load(loadUrl); // ejecuto
       });
 

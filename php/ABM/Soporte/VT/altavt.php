@@ -19,7 +19,7 @@ require_once "../Model/VisitaTecnica.php";
 $visita->setfecha($fecha);
 $visita->sethora($hora);
 
-
+$visita->setestado("Fecha Asignada");
 
 $entityManager->flush();
 

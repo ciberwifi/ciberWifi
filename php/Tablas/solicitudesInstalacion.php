@@ -37,6 +37,7 @@ require_once "../Model/Instalacion.php";
                 <th>Direccion</th>
                 <th>Observaciones</th>
                 <th>Estado</th>
+                <th>Fecha Programada</th>
             </tr>
           </thead>
           <tbody>
@@ -52,7 +53,7 @@ require_once "../Model/Instalacion.php";
               <td><?php echo $dato->getdireccion();?></td>
               <td><?php echo $dato->getobservaciones();?></td>
               <td><?php echo $dato->getestado();?></td>
-             
+             <td><?php echo $dato->getfechainstal();?></td>
               </tr>
             <?php
               }

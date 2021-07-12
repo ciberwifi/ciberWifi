@@ -52,6 +52,11 @@ Class Instalacion {
      */
 	private $estado;
 
+/**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $fechaInstal;
+
 	
     // Declaración de un método
 
@@ -171,6 +176,15 @@ $this->fecha->setDate($fechaArray[0], $fechaArray[1],$fechaArray[2]);
 }  
 
 
+public function setfechainstal($fechaInstal)
+{
+$this->fechaInstal=$fechaInstal;
+}
+
+public function getfechainstal()
+{
+return $this->fechaInstal;
+}
 
   public function close()
     {

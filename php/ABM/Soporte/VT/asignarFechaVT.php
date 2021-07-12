@@ -35,13 +35,13 @@ $visita= $entityManager->getRepository('VisitaTecnica')->findOneBy(array('id' =>
              
   <div class="input-group mb-3">
      <span class="input-group-text" id="basic-addon1">Fecha</span>
-     <input id="fechavt" name="fechavt" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" placeholder="10/05/2021" >
+     <input id="fechavt" name="fechavt" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" placeholder="10/05/2021"  value="">
         </div>
 
 
   <div class="input-group mb-3">
      <span class="input-group-text" id="basic-addon1">Franja Horaria</span>
-     <input id="horavt" name="horavt" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" placeholder="09:00 a 14:00" >
+     <input id="horavt" name="horavt" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" placeholder="09:00 a 14:00" value="">
         </div>
 
       <div class="modal-footer">

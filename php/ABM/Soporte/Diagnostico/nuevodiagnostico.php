@@ -1,7 +1,7 @@
 
 <?php
-require_once "../bootstrap.php";
-require_once "../Model/Ticket.php";
+require_once "../../../../bootstrap.php";
+require_once "../../../../Model/Ticket.php";
 
 
 
@@ -20,7 +20,7 @@ $ticket = $entityManager->getRepository('Ticket')->findOneBy(array('id' => $id))
    localStorage.setItem("id", "<?php echo $id; ?>");       
 </script>
 
- <div class="modal fade" id="modaldiagnostico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="modalNuevoDiagnostico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   
    <form id="formdiagnostico" class="container">
  <div class="modal-dialog">
@@ -77,8 +77,8 @@ $ticket = $entityManager->getRepository('Ticket')->findOneBy(array('id' => $id))
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id="btnguardar" name="btnguardar">Guardar</button>
-        <div id="resultado2" class="container" style="margin-top: 20px;" ></div>
+        <button type="button" class="btn btn-primary" id="btnGuardarDiagnostico" name="btnGuardarDiagnostico">Guardar</button>
+        <div id="contenedorDiagnostico" class="container" style="margin-top: 20px;" ></div>
       </div>
     </div>
   </div>
@@ -112,16 +112,16 @@ $ticket = $entityManager->getRepository('Ticket')->findOneBy(array('id' => $id))
 
            var id = localStorage.getItem("id");
 
-         $('#modaldiagnostico').modal('show');
+         $('#modalNuevoDiagnostico').modal('show');
 
-         $("#btnguardar").click(function(){
+         $("#btnGuardarDiagnostico").click(function(){
 
-      var loadUrl = "php/altadiagnostico.php";// paso parametro accion e id
+      var loadUrl = "php/ABM/Soporte/Diagnostico/altadiagnostico.php";// paso parametro accion e id
       var data = $("#formdiagnostico").serializeArray();
         data.push({name: "id", value: id});
      
       $.post(loadUrl, $.param(data) ,function(result) { 
-         $("#resultado2").html(result);
+         $("#contenedorDiagnostico").html(result);
       });
       });;  
 

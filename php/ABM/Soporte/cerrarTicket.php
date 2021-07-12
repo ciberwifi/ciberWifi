@@ -1,7 +1,7 @@
 <?php
 
-require_once "../bootstrap.php";
-require_once "../Model/Ticket.php";
+require_once "../../../bootstrap.php";
+require_once "../../../Model/Ticket.php";
 
 
 echo  $id= htmlspecialchars($_POST['id']);

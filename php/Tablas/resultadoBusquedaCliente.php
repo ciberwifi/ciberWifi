@@ -3,9 +3,9 @@
 
 
 
-require_once "../bootstrap.php";
-require_once "../Model/Cliente.php";
-require_once "../Model/Ticket.php";
+require_once "../../bootstrap.php";
+require_once "../../Model/Cliente.php";
+require_once "../../Model/Ticket.php";
 
 
 

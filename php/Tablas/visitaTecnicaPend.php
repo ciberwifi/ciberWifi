@@ -25,7 +25,10 @@ require_once "../Model/Diagnostico.php";
               </h4>
 
 <?php
-$visitas = $entityManager->getRepository('VisitaTecnica')->findall();
+$visitas1 = $entityManager->getRepository('VisitaTecnica')->findBy(array('estado' => 'pendiente'));
+$visitas2 = $entityManager->getRepository('VisitaTecnica')->findBy(array('estado' => 'Fecha Asignada'));
+ 
+         $visitas=array_merge($visitas1, $visitas2);
 
 ?>              
 
@@ -40,6 +43,7 @@ $visitas = $entityManager->getRepository('VisitaTecnica')->findall();
               <th>Zona</th>
               <th>Ip</th>
               <th>Apellido</th>
+              <th>Direccion</th>
               <th>Reclamo</th>
               <th>Diagnostico</th>
               <th>Estado</th>
@@ -51,11 +55,12 @@ $visitas = $entityManager->getRepository('VisitaTecnica')->findall();
             <tr>
               <?php foreach($visitas as $dato ) {
               ?>
-               <td style="visibility: hidden;"> <?php echo $dato->getdiagnostico()->getid();?></td>
+               <td style="visibility: hidden;"> <?php echo $dato->getid();?></td>
               <td><?php echo $dato->getdiagnostico()->getticket()->getfecha();?></td>
               <td><?php echo $dato->getdiagnostico()->getticket()->getcliente()->getzona();?></td>
                <td><?php echo $dato->getdiagnostico()->getticket()->getip();?></td>
               <td><?php echo $dato->getdiagnostico()->getticket()->getcliente()->getapellidoynombre();?></td>
+               <td><?php echo $dato->getdiagnostico()->getticket()->getcliente()->getdireccion();?></td>
               <td><?php echo $dato->getdiagnostico()->getticket()->getmotivo();?></td>
               <td><?php echo $dato->getdiagnostico()->getmotivo();?></td>
               <td><?php echo $dato->getestado();?></td>
@@ -72,7 +77,7 @@ $visitas = $entityManager->getRepository('VisitaTecnica')->findall();
       </div>
 
 
-      <div id="resultado3" class="container" style="margin-top: 20px;" >
+      <div id="resultadovt" class="container" style="margin-top: 20px;" >
 
 
    
@@ -81,8 +86,21 @@ $visitas = $entityManager->getRepository('VisitaTecnica')->findall();
 
 
  <td>
-                <button type="button" class="btn btn-success btn-sm" id="btnasignarfechavt"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Asignar Fecha </button>
-              </td>
+    <button type="button" class="btn btn-success btn-sm" id="btnasignarfechavt"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Asignar Fecha </button>
+</td>
+
+ <td>
+    <button type="button" class="btn btn-success btn-sm" id="btneditarfechavt"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Editar Fecha </button>
+</td>
+
+
+ <td>
+    <button type="button" class="btn btn-success btn-sm" id="btnvtrealizada"  data-bs-toggle="modal" data-bs-target="#exampleModal"> Visita Realizada  </button>
+</td>
+
+<td>
+    <button type="button" class="btn btn-success btn-sm" id="btnhistorialvt"  data-bs-toggle="modal" data-bs-target="#exampleModal"> Historial  </button>
+</td>
          
 <script>
 
@@ -100,13 +118,28 @@ $visitas = $entityManager->getRepository('VisitaTecnica')->findall();
 
 
        $("#btnasignarfechavt").one('click',function(){
-       var loadUrl = "php/editarvt.php";
+       var loadUrl = "php/asignarFechaVT.php";
         var data= { 'id' : row };
           $.post(loadUrl, data ,function(result) { 
-          $("#resultado3").html(result);
-         });
-          
-        });
+          $("#resultadovt").html(result);
+          });
+          });
+
+        $("#btneditarfechavt").one('click',function(){
+       var loadUrl = "php/editarFechaVT.php";
+        var data= { 'id' : row };
+          $.post(loadUrl, data ,function(result) { 
+          $("#resultadovt").html(result);
+          });
+          });
+
+          $("#btnvtrealizada").one('click',function(){
+       var loadUrl = "php/visitaRealizada.php";
+        var data= { 'id' : row };
+          $.post(loadUrl, data ,function(result) { 
+          $("#resultadovt").html(result);
+          });
+          });
 
 
 

@@ -6,7 +6,11 @@ composer update
 
 OBjetivos de Version
 
-V1 Alcances 
+V1 
+
+
+
+
 -Busqueda cliente por Ip dni direccion apellido y/o nombre OK
 -ABM Ventas OK -- menos eliminar solicitud , historial , cambio de estado
 -ABM Soporte -Nuevo Reclamo , Reclamos Ingresados , Diagnosticos , Visitas Tecnicas

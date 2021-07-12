@@ -1,9 +1,9 @@
 
 <?php
 
-require_once "../bootstrap.php";
-require_once "../Model/Ticket.php";
-require_once "../Model/Cliente.php";
+require_once "../../bootstrap.php";
+require_once "../../Model/Ticket.php";
+require_once "../../Model/Cliente.php";
 
 
 ?>
@@ -28,7 +28,7 @@ require_once "../Model/Cliente.php";
         $tickets = $entityManager->getRepository('Ticket')->findBy(array('estado' => 'cerrado'));
 
         ?>
-        <table id="thetable" class="table table-striped table-sm">
+        <table id="tablareclamoshistorial" class="table table-striped table-sm">
           <thead>
             <tr>
                <th style="visibility: hidden;">Id</th>

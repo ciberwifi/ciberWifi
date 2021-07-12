@@ -1,9 +1,9 @@
 
 <?php
 
-require_once "../bootstrap.php";
-require_once "../Model/Ticket.php";
-require_once "../Model/Diagnostico.php";
+require_once "../../../../bootstrap.php";
+require_once "../../../../Model/Ticket.php";
+require_once "../../../../Model/Diagnostico.php";
 
 
 
@@ -80,20 +80,20 @@ require_once "../Model/Diagnostico.php";
       </div>
 
 
-      <div id="resultado2" class="container" style="margin-top: 20px;" >
+      <div id="contenedorTablaDiagnostico" class="container" style="margin-top: 20px;" >
 
 
    
       </div>
   <td>
-  <button type="button" class="btn btn-success btn-sm" id="btnEditar"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Editar </button>
+  <button type="button" class="btn btn-success btn-sm" id="btnEditarDiagnostico"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Editar </button>
    </td>
 
     <td>
       <button type="button" class="btn btn-success btn-sm" id="btnhistorial"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Historial</button>
     </td>
 
-<div id="resultado4" class="container" style="margin-top: 20px;" >
+<div id="contenedorHistorialDiagnostico" class="container" style="margin-top: 20px;" >
 
 
    
@@ -112,8 +112,8 @@ require_once "../Model/Diagnostico.php";
 
       $("#btnhistorial").click(function(){
 
-      var loadUrl = "php/diagnosticosHistorial.php"; // paso parametro accion e id
-      $("#resultado4").load(loadUrl); // ejecuto
+      var loadUrl = "php/ABM/Soporte/Diagnostico/tablaDiagnosticosHistorial.php"; // paso parametro accion e id
+      $("#contenedorHistorialDiagnostico").load(loadUrl); // ejecuto
       }); 
 
 
@@ -123,10 +123,10 @@ require_once "../Model/Diagnostico.php";
 
 
        $("#btnEditar").one('click',function(){
-       var loadUrl = "php/editardiagnostico.php";
+       var loadUrl = "php/ABM/Soporte/Diagnostico/editardiagnostico.php";
         var data= { 'id' : row };
           $.post(loadUrl, data ,function(result) { 
-          $("#resultado2").html(result);
+          $("#contenedorTablaDiagnostico").html(result);
          });
           
         });
