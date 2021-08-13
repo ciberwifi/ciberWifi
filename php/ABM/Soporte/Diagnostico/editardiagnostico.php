@@ -1,8 +1,8 @@
 
 <?php
-require_once "../bootstrap.php";
-require_once "../Model/Diagnostico.php";
-require_once "../Model/Ticket.php";
+require_once "../../../../bootstrap.php";
+require_once "../../../../Model/Diagnostico.php";
+require_once "../../../../Model/Ticket.php";
 
 
  $id= htmlspecialchars($_POST['id']);
@@ -134,7 +134,7 @@ $monitoreo=$diagnostico->getmonitoreo();
 
          $("#btnguardar").click(function(){
 
-      var loadUrl = "php/editarDatosDiagnostico.php";// paso parametro accion e id
+      var loadUrl = "php/ABM/Soporte/Diagnostico/editarDatosDiagnostico.php";// paso parametro accion e id
       var data = $("#formdiagnostico").serializeArray();
         data.push({name: "id", value: id});
      

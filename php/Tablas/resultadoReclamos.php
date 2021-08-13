@@ -32,6 +32,7 @@ require_once "../../Model/Cliente.php";
          $tickets4 = $entityManager->getRepository('Ticket')->findBy(array('estado' => 'Visita Tecnica'));
          $tickets=array_merge($tickets1,$tickets2,$tickets3,$tickets4);
         ?>
+
         <table id="tablaReclamos" class="table table-striped table-sm">
           <thead>
             <tr>
@@ -68,7 +69,7 @@ require_once "../../Model/Cliente.php";
               ?>
 
        
-          <tr>
+        
           </tbody>
         </table>
       </div>
@@ -92,13 +93,13 @@ require_once "../../Model/Cliente.php";
                 <button type="button" class="btn btn-success btn-sm" id="btndiagnosticar"  data-bs-toggle="modalReclamo" data-bs-target="#modalReclamo" >Diagnosticar </button>
               </td>
                 <td>
-                <button type="button" class="btn btn-success btn-sm" id="btnverdiagnostico"  data-bs-toggle="modalReclamo" data-bs-target="#exampleModal" >Ver Diagnostico </button>
+                <button type="button" class="btn btn-success btn-sm" id="btnverdiagnostico"  data-bs-toggle="contenedorReclamo" data-bs-target="#contenedorReclamo" >Ver Diagnostico </button>
               </td>
               <td>
-                <button type="button" class="btn btn-success btn-sm" id="btncerrarticket"  data-bs-toggle="modalReclamo" data-bs-target="#exampleModal" >Cerrar Ticket</button>
+                <button type="button" class="btn btn-success btn-sm" id="btncerrarticket"  data-bs-toggle="contenedorReclamo" data-bs-target="#contenedorReclamo" >Cerrar Ticket</button>
               </td>
-                   <td>
-                <button type="button" class="btn btn-success btn-sm" id="btnhistorialreclamos"  data-bs-toggle="modalReclamo" data-bs-target="#exampleModal" >Historial</button>
+              <td>
+                <button type="button" class="btn btn-success btn-sm" id="btnhistorialreclamos"  data-bs-toggle="contenedorReclamo" data-bs-target="#contenedorReclamo" >Historial</button>
               </td>
 
        

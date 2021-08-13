@@ -22,20 +22,20 @@ require_once "../../../../Model/Diagnostico.php";
 
 <h4 style="margin-bottom: 30px;">Diagnosticos</h4>
 
-<?php
+
+<span class="border-bottom"></span>
+
+      <div class="tabla table-responsive">
+
+        <?php
    
   $tickets2 = $entityManager->getRepository('Ticket')->findBy(array('estado' => 'diagnosticado'));
   $tickets3 = $entityManager->getRepository('Ticket')->findBy(array('estado' => 'Monitoreado'));
   $tickets4 = $entityManager->getRepository('Ticket')->findBy(array('estado' => 'Visita Tecnica'));
   $diagnosticos=array_merge($tickets2,$tickets3,$tickets4);
-        
+         ?>
 
-        
-        ?>
 
-<span class="border-bottom"></span>
-
-      <div class="table-responsive">
         <table id="tablaDiagnosticos" class="table table-striped table-sm">
           <thead>
             <tr>
@@ -49,8 +49,8 @@ require_once "../../../../Model/Diagnostico.php";
               <th>Visita</th>
               <th>Monitoreo</th>
               <th>Detalle Diagnostico</th>
-              <th>Respuesta</th>
-                <th></th>
+         
+                
             </tr>
           </thead>
           <tbody>
@@ -67,37 +67,36 @@ require_once "../../../../Model/Diagnostico.php";
               <td> <?php echo sizeof($dato->getdiagnostico()->getallvisitas());?></td>
               <td><?php echo $dato->getdiagnostico()->getmonitoreo();?></td>
               <td><?php echo $dato->getdiagnostico()->getobservaciones();?></td>
-               <td><?php echo $dato->getrespuesta();?></td>
+            
               </tr>
             <?php
               }
               ?>
 
        
-          <tr>
+        
           </tbody>
         </table>
       </div>
 
 
-      <div id="contenedorTablaDiagnostico" class="container" style="margin-top: 20px;" >
+      <div id="modalDiagnostico" class="container" style="margin-top: 20px;" >
+  </div>
 
-
-   
-      </div>
   <td>
-  <button type="button" class="btn btn-success btn-sm" id="btnEditarDiagnostico"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Editar </button>
-   </td>
+  <button type="button" class="btn btn-success btn-sm" id="btnEditarDiagnostico"  data-bs-toggle="modalDiagnostico" data-bs-target="#modalDiagnostico" >Editar </button>
+  </td>
 
     <td>
-      <button type="button" class="btn btn-success btn-sm" id="btnhistorial"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Historial</button>
+      <button type="button" class="btn btn-success btn-sm" id="btnhistorial"  data-bs-toggle="contenedorDiagnostico" data-bs-target="#contenedorDiagnostico" >Historial</button>
     </td>
 
-<div id="contenedorHistorialDiagnostico" class="container" style="margin-top: 20px;" >
+
+<div id="contenedorDiagnostico" class="container" style="margin-top: 20px;" >
+
+</div> 
 
 
-   
-      </div>  
 <script>
 
     $.ajaxSetup ({  
@@ -113,7 +112,7 @@ require_once "../../../../Model/Diagnostico.php";
       $("#btnhistorial").click(function(){
 
       var loadUrl = "php/ABM/Soporte/Diagnostico/tablaDiagnosticosHistorial.php"; // paso parametro accion e id
-      $("#contenedorHistorialDiagnostico").load(loadUrl); // ejecuto
+      $("#contenedorDiagnostico").load(loadUrl); // ejecuto
       }); 
 
 
@@ -122,11 +121,11 @@ require_once "../../../../Model/Diagnostico.php";
   
 
 
-       $("#btnEditar").one('click',function(){
+       $("#btnEditarDiagnostico").one('click',function(){
        var loadUrl = "php/ABM/Soporte/Diagnostico/editardiagnostico.php";
         var data= { 'id' : row };
           $.post(loadUrl, data ,function(result) { 
-          $("#contenedorTablaDiagnostico").html(result);
+          $("#modalDiagnostico").html(result);
          });
           
         });

@@ -1,9 +1,9 @@
 
 <?php
 
-require_once "../bootstrap.php";
-require_once "../Model/Ticket.php";
-require_once "../Model/Diagnostico.php";
+require_once "../../../../bootstrap.php";
+require_once "../../../../Model/Ticket.php";
+require_once "../../../../Model/Diagnostico.php";
 
 
 
@@ -70,38 +70,6 @@ require_once "../Model/Diagnostico.php";
       </div>
 
 
-      <div id="resultado2" class="container" style="margin-top: 20px;" >
 
-
-   
-      </div>
- 
-
-<script>
-
-    $.ajaxSetup ({  
-        cache: false  
-      });
-    $( document ).ready(function() {
-
- 
-
-    $("#btnEditar").click(function(){
-
-      var loadUrl = "html/nuevodiagnostico.html"; // paso parametro accion e id
-      $("#resultado2").load(loadUrl); // ejecuto
-      }); 
-
-      $("#btnhistorial").click(function(){
-
-      var loadUrl = "php/reclamosHistorial.php"; // paso parametro accion e id
-      $("#resultado4").load(loadUrl); // ejecuto
-      }); 
-
-
-
-  }); 
-
-</script>
    
 

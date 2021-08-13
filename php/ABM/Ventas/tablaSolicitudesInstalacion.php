@@ -2,8 +2,8 @@
 <?php
 
 
-require_once "../bootstrap.php";
-require_once "../Model/Instalacion.php";
+require_once "../../../bootstrap.php";
+require_once "../../../Model/Instalacion.php";
 ?>
 
 <style>
@@ -23,9 +23,13 @@ require_once "../Model/Instalacion.php";
 
       <div class="tabla table-responsive">
         <?php
-        $instalaciones = $entityManager->getRepository('Instalacion')->findall();
+       
+     $instalaciones = $entityManager->getRepository('Instalacion')->findBy(array('estado' => 'pendiente'));
+
         ?>
-        <table id="thetable" class="table table-striped table-sm">
+
+       
+        <table id="tablaVentas" class="table table-striped table-sm">
           <thead>
             <tr>
               <th style="visibility: hidden;">Id</th>
@@ -37,7 +41,7 @@ require_once "../Model/Instalacion.php";
                 <th>Direccion</th>
                 <th>Observaciones</th>
                 <th>Estado</th>
-                <th>Fecha Programada</th>
+       
             </tr>
           </thead>
           <tbody>
@@ -48,25 +52,25 @@ require_once "../Model/Instalacion.php";
               <td> <?php echo $dato->getfecha();?> </td>
               <td><?php echo $dato->getzona();?></td>
               <td><?php echo $dato->getapellidoynombre();?></td>
-           <td><?php echo $dato->getdni();?></td>
+              <td><?php echo $dato->getdni();?></td>
               <td><?php echo $dato->gettel();?></td>
               <td><?php echo $dato->getdireccion();?></td>
               <td><?php echo $dato->getobservaciones();?></td>
               <td><?php echo $dato->getestado();?></td>
-             <td><?php echo $dato->getfechainstal();?></td>
+       
               </tr>
             <?php
               }
               ?>
 
        
-          <tr>
+          
           </tbody>
         </table>
       </div>
 
 
-      <div id="resultado3" class="container" style="margin-top: 20px;" >
+      <div id="modalVentas" class="container" style="margin-top: 20px;" >
 
 
    
@@ -74,35 +78,38 @@ require_once "../Model/Instalacion.php";
 
 
 
-   <div id="resultado4" class="container" style="margin-top: 20px;" >
+     
+
+
+               <td>
+                <button type="button" class="btn btn-success btn-sm" id="btnnuevainsta"  data-bs-toggle="modalVentas" data-bs-target="#modalVentas" >Nueva Solicitud </button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-success btn-sm" id="btneditar"  data-bs-toggle="modalVentas" data-bs-target="#modalVentas" >Editar </button>
+              </td>
+              <td>
+            <td> 
+                <button  type="button" class="btn btn-success btn-sm" id="btnEliminarSolicitud"  data-bs-toggle="contenedorVentas" data-bs-target="#contenedorVentas" >Eliminar Solicitud</button>
+              </td>
+            
+               <td>
+                <button type="button" class="btn btn-success btn-sm" id="btnAsignarFecha"  data-bs-toggle="modalVentas" data-bs-target="#modalVentas" >Asignar Fecha</button>
+              </td>
+               
+
+               <td>
+                <button type="button" class="btn btn-success btn-sm" id="btnCerrarVenta"  data-bs-toggle="contenedorVentas" data-bs-target="#contenedorVentas" >Instalacion Realizada!</button>
+              </td>
+                <td>
+                <button type="button" class="btn btn-success btn-sm" id="btnHistorialVentas"  data-bs-toggle="contenedorVentas" data-bs-target="#contenedorVentas" >Historial</button>
+              </td>
+
+        <div id="contenedorVentas" class="container" style="margin-top: 20px;" >
 
 
    
-      </div>      
-
-
-               <td>
-                <button type="button" class="btn btn-success btn-sm" id="btnnuevainsta"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Nueva Solicitud </button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-success btn-sm" id="btneditar"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Editar </button>
-              </td>
-              <td>
-
-            
-                <td>
-                <button type="button" class="btn btn-success btn-sm" id="btnaprobarsolicitud"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Aprobar Solicitud</button>
-              </td>
-               <td>
-                <button type="button" class="btn btn-success btn-sm" id="btnhistorial"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Asignar Fecha</button>
-              </td>
-                <td>
-                <button type="button" class="btn btn-success btn-sm" id="btnhistorial"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Historial</button>
-              </td>
-                  
-                <button  type="button" class="btn btn-success btn-sm" id="btncerrarticket"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Eliminar</button>
-              </td>
-
+      </div>          
+               
              
 <script>
 
@@ -118,7 +125,7 @@ require_once "../Model/Instalacion.php";
   
 // paso parametro accion e id
 
-    $('#thetable').find('tr').click(function(){
+    $('#tablaVentas').find('tr').click(function(){
    var row = $(this).find('td:first').text();
   
 
@@ -126,43 +133,52 @@ require_once "../Model/Instalacion.php";
        var loadUrl = "php/editarinstal.php";
         var data= { 'id' : row };
           $.post(loadUrl, data ,function(result) { 
-          $("#resultado3").html(result);
+          $("#modalVentas").html(result);
          });
             $.done(function(html){
             $(".tabla").html(html);
              });
         });
+
+      $("#btnCerrarVenta").one('click',function(){
+      var loadUrl = "php/ABM/Ventas/cerrarVenta.php"; // paso parametro accion e id
+           var data= { 'id' : row };
+          $.post(loadUrl, data ,function(result) { 
+          $("#contenedorVentas").html(result);
+      }); 
+    });
+
+
+
   }); 
 
-    $("#btnhistorial").click(function(){
+    $("#btnHistorialVentas").click(function(){
 
-      var loadUrl = "php/reclamosHistorial.php"; // paso parametro accion e id
-      $("#resultado4").load(loadUrl); // ejecuto
+      var loadUrl = "php/ABM/Ventas/resultadoVentasHistorial.php"; // paso parametro accion e id
+      $("#contenedorVentas").load(loadUrl); // ejecuto
       }); 
 
   $("#btnnuevainsta").click(function(){
 
       var loadUrl = "html/nuevaInstal.html";
-      $("#resultado3").load(loadUrl); // ejecuto
+      $("#modalVentas").load(loadUrl); // ejecuto
       });
 
   
 
 
     
-    $('#thetable').find('tr').dblclick(function(){
+    $('#tablaVentas').find('tr').dblclick(function(){
       var row = $(this).find('td:first').text();
 
-      var loadUrl = "php/editarinstal.php";// paso parametro accion e id
+      var loadUrl = "php/ABM/Ventas/editarinstal.php";// paso parametro accion e id
 
      
       var data= { 'id' : row };
       $.post(loadUrl, data ,function(result) { 
-         $("#resultado3").html(result);
+         $("#modalVentas").html(result);
       });
 
-       
- // alert('You clicked ' + row);
 });
 
 
@@ -171,7 +187,7 @@ require_once "../Model/Instalacion.php";
         var fondooriginal;
         $(Inicializar);
         function Inicializar() {
-            $('#thetable tr').click(function () {
+            $('#tablaVentas tr').click(function () {
                 if (ultimaFila != null) {
                     ultimaFila.css('background-color', colorOriginal)
                     ultimaFila.css('color', fondooriginal)

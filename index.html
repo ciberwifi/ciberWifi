@@ -61,7 +61,7 @@
               </li>
               <li><a class="dropdown-item" id="btnreclamos" href="#">Reclamos Ingresados</a></li>
               <li><a class="dropdown-item" id="btnverdiagnosticos" href="#">Diagnosticos</a></li>
-              <li><a class="dropdown-item" id="btnvt" href="#">Visitas Tecnicas</a></li>
+              <li><a class="dropdown-item" id="btnVisitasTecnicas" href="#">Visitas Tecnicas</a></li>
             </ul>
 
  </li>
@@ -99,7 +99,7 @@
 </div>
 
 
-  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <script>
 
@@ -153,9 +153,9 @@
       $("#resultado").load(loadUrl); // ejecuto
       });
 
- $("#btnvt").click(function(){
+ $("#btnVisitasTecnicas").click(function(){
 
-      var loadUrl = "php/visitaTecnicaPend.php"; // paso parametro accion e id
+      var loadUrl = "php/ABM/Soporte/VisitaTecnica/resultadoVisitaTecnica.php"; // paso parametro accion e id
       $("#resultado").load(loadUrl); // ejecuto
       });
 
@@ -167,7 +167,7 @@
 
  $("#btnslinstal").click(function(){
 
-      var loadUrl = "php/solicitudesInstalacion.php";
+      var loadUrl = "php/ABM/Ventas/tablaSolicitudesInstalacion.php";
       $("#resultado").load(loadUrl); // ejecuto
       });
 
