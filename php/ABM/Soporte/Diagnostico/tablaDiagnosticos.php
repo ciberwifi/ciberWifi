@@ -17,7 +17,7 @@ require_once "../../../../Model/Diagnostico.php";
  
   cursor: pointer;
 }
-
+.hideextra { white-space: nowrap; overflow: hidden; text-overflow:ellipsis; }
 </style>
 
 <h4 style="margin-bottom: 30px;">Diagnosticos</h4>
@@ -58,7 +58,8 @@ require_once "../../../../Model/Diagnostico.php";
               <?php foreach($diagnosticos as $dato ) {
               ?>
                 <td style="visibility: hidden;"> <?php echo $dato->getdiagnostico()->getid();?></td>
-              <td><?php echo $dato->getfecha();?></td>
+              <td > <div class="hideextra" >  <?php echo $dato->getfecha();?> 
+              </div></td>
               <td><?php echo $dato->getcliente()->getzona();?></td>
                <td><?php echo $dato->getip();?></td>
                 <td><?php echo $dato->getcliente()->getapellidoynombre();?></td>

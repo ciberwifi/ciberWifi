@@ -1,6 +1,10 @@
 {
     "require": {
     
-        "doctrine/orm": "*"
+        "doctrine/orm": "*",
+        "mercadopago/dx-php": "^2.4",
+        "psr/simple-cache": "^3.0",
+        "psr/cache": "2.0.0",
+        "symfony/cache": "^5.3"
     }
 }

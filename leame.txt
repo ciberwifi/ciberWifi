@@ -15,3 +15,11 @@ V1
 -ABM Ventas OK -- menos eliminar solicitud , historial , cambio de estado
 -ABM Soporte -Nuevo Reclamo , Reclamos Ingresados , Diagnosticos , Visitas Tecnicas
 -Inbox 
+
+
+-agregar comentario al cerrar ticket 
+
+
+solucion al problema sinfoni cache
+composer require psr/cache 2.0.0
+composer require symfony/cache

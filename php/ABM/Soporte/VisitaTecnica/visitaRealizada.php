@@ -1,7 +1,7 @@
 
 <?php
-require_once "../bootstrap.php";
-require_once "../Model/Ticket.php";
+require_once "../../../../bootstrap.php";
+require_once "../../../../Model/Ticket.php";
 
 
 
@@ -81,7 +81,7 @@ $visita= $entityManager->getRepository('VisitaTecnica')->findOneBy(array('id' =>
 
          $("#btnguardar").click(function(){
 
-      var loadUrl = "php/cerrarVT.php";// paso parametro accion e id
+      var loadUrl = "php/ABM/Soporte/VisitaTecnica/cerrarVT.php";// paso parametro accion e id
       var data = $("#formcerrarvt").serializeArray();
         data.push({name: "id", value: id});
      

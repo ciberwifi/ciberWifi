@@ -47,7 +47,12 @@ Class Cliente {
 	/**
      * @ORM\Column(type="string")
      */
-	private $mediosPago;
+    private $linkPago;
+    /**
+     * @ORM\Column(type="string")
+     */
+
+    private $mediosPago;
 
 	/**
      * @ORM\Column(type="date", nullable=true)
@@ -55,7 +60,7 @@ Class Cliente {
 	private $fechaAlta;
 	/**
 
-     * @ORM\OneToOne(targetEntity="Plan" , cascade={"persist", "remove"} )
+     * @ORM\ManyToOne(targetEntity="Plan" , cascade={"persist", "remove"} )
      */
 	private $idplan;
 
@@ -76,6 +81,8 @@ Class Cliente {
      * @ORM\Column(type="string")
      */
     private $idip;
+
+   
 
     // Declaración de un método
 
@@ -125,10 +132,18 @@ public function getmediosPago()
 {
 return $this->mediosPago;
 }
+public function getlinkPago()
+{
+return $this->linkPago;
+}
 
 public function getfechaAlta()
 {
 return $this->fechaAlta;
+}
+public function getidplan()
+{
+return $this->idplan;
 }
 
 public function getidip()
@@ -136,6 +151,11 @@ public function getidip()
 return $this->idip;
 }
 	
+public function getbaja()
+{
+return $this->baja;
+} 
+
 public function setzona($zona)
 {
 $this->zona=$zona;
@@ -171,18 +191,34 @@ public function setmediosPago($mediosPago)
 $this->mediosPago=$mediosPago;
 }
 
+public function setlinkPago($linkPago)
+{
+ $this->linkPago=$linkPago;
+}
+
 public function setfechaAlta($fechaAlta)
 {
 $this->fechaAlta=$fechaAlta;
 }
+
+public function setidplan($idplan)
+{
+$this->idplan=$idplan;
+}
+
 public function setidip($idip)
 {
 $this->idip=$idip;
 }
 
+
 public function setidconexion($conexion)
 {
 $this->idConexion=$conexion;
+}
+public function setbaja($baja)
+{
+$this->baja=$baja;
 }
 
 public function addticket($ticket)

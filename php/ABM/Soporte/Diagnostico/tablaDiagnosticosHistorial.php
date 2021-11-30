@@ -7,9 +7,15 @@ require_once "../../../../Model/Diagnostico.php";
 
 
 
-
-
 ?>
+
+
+<style>
+
+.hideextra { white-space: nowrap; overflow: hidden; text-overflow:ellipsis; }
+
+</style>
+
 
 <h4 style="margin-bottom: 30px;">Historial Diagnosticos</h4>
 
@@ -48,7 +54,8 @@ require_once "../../../../Model/Diagnostico.php";
 
                 if($dato->getdiagnostico()!==null){
               ?>
-              <td><?php echo $dato->getfecha();?></td>
+        <td > <div class="hideextra" >  <?php echo $dato->getfecha();?> 
+              </div></td>
               <td><?php echo $dato->getcliente()->getzona();?></td>
                <td><?php echo $dato->getip();?></td>
                 <td><?php echo $dato->getcliente()->getapellidoynombre();?></td>

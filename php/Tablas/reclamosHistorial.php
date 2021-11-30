@@ -13,7 +13,10 @@ require_once "../../Model/Cliente.php";
   background-color: #CBD1D8;
  
   cursor: pointer;
+  
 }
+
+.hideextra { white-space: nowrap; overflow: hidden; text-overflow:ellipsis; }
 
 </style>
 
@@ -48,7 +51,8 @@ require_once "../../Model/Cliente.php";
               <?php foreach($tickets as $dato ) {
               ?>
                <td style="visibility: hidden;"> <?php echo $dato->getid();?></td>
-              <td> <?php echo $dato->getfecha();?> </td>
+             <td > <div class="hideextra" >  <?php echo $dato->getfecha();?> 
+              </div></td>
               <td> <?php echo $dato->getcliente()->getzona();?> </td>
               <td><?php echo $dato->getip();?></td>
               <td> <?php echo $dato->getcliente()->getapellidoynombre();?> </td>

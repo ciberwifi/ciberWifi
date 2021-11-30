@@ -81,10 +81,11 @@ if (sizeof($clientes) === 0) {
               <th>IP</th>
               <th>Apellido y Nombre</th>
               <th>Dni</th>
-              <th>Telefonos</th>
               <th>Direccion</th>
-              <th>Medios Pago</th>
-              
+              <th>Telefonos</th>
+              <th>Email</th>
+              <th>Link MP</th>
+              <th>Plan</th>
             </tr>
           </thead>
          
@@ -95,9 +96,11 @@ if (sizeof($clientes) === 0) {
               <td> <?php echo $cliente->getidip();?> </td>
               <td><?php echo $cliente->getapellidoynombre();?></td>
               <td><?php echo $cliente->getdni();?></td>
-              <td><?php echo $cliente->gettel();?></td>
               <td><?php echo $cliente->getdireccion();?></td>
-              <td><?php echo $cliente->getmediospago();?></td>
+              <td><?php echo $cliente->gettel();?></td>
+                <td><?php echo $cliente->getemail();?></td>
+              <td><?php echo $cliente->getlinkPago();?></td>
+              <td><?php echo "$".$cliente->getidplan()->getmonto();?></td>
               
             </tr>
             <?php } ?>

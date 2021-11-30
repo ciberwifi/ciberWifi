@@ -7,9 +7,9 @@ require_once "../../../Model/Instalacion.php";
  $id= htmlspecialchars($_POST['id']);
 
 $ticket = $entityManager->getRepository('Instalacion')->findOneBy(array('id' => $id));
-$ticket->setestado("cerrado");
+$ticket->setestado("cerrada");
 $entityManager->flush();
 
-echo "Instalacion Realizada";
+echo "Solicitud Archivada";
 
  ?>

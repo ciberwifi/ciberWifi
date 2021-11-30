@@ -8,32 +8,50 @@ require_once "../../Model/Cliente.php";
 
 
 ?>
-<style>
+<head>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+  <link rel="stylesheet" href="bootstrap/DataTables/1.11.2/css/dataTables.bootstrap4.min.css">
+  <script src="bootstrap/DataTables/1.11.2/js/jquery.dataTables.min.js"></script>
+  <script src="bootstrap/DataTables/1.11.2/js/dataTables.bootstrap4.min.js"></script>
+</head>
 
-  table tr:hover {
-  background-color: #CBD1D8;
+<style>
+/*
+  table tbody tr:hover {
+  background-color: #297D18;
  
   cursor: pointer;
 }
+*/
+.hideextra { white-space: nowrap; overflow: hidden; text-overflow:ellipsis; }
+
+    #tablaReclamos tbody tr:hover  {
+       background-color: #297D18;
+       color:white;
+       cursor: pointer;
+   }
+
+   
 
 </style>
+<body>
 
-<h4 style="margin-bottom: 30px;">Reclamos Pendientes
-
-              </h4>
+<h4 style="margin-bottom: 30px; margin-left: -5%;">Reclamos Ingresados</h4>
 
 <span class="border-bottom"></span>
 
-      <div class="tabla table-responsive">
-          <?php
+   
+      <div class="table-responsive"  style="margin-left: -3%;">
+        
+
+        <table id="tablaReclamos" class="table table-striped table-sm  align-middle" >
+            <?php
         $tickets1 = $entityManager->getRepository('Ticket')->findBy(array('estado' => 'pendiente'));
          $tickets2 = $entityManager->getRepository('Ticket')->findBy(array('estado' => 'diagnosticado'));
          $tickets3 = $entityManager->getRepository('Ticket')->findBy(array('estado' => 'Monitoreado'));
          $tickets4 = $entityManager->getRepository('Ticket')->findBy(array('estado' => 'Visita Tecnica'));
          $tickets=array_merge($tickets1,$tickets2,$tickets3,$tickets4);
         ?>
-
-        <table id="tablaReclamos" class="table table-striped table-sm">
           <thead>
             <tr>
                <th style="visibility: hidden;">Id</th>
@@ -41,7 +59,7 @@ require_once "../../Model/Cliente.php";
               <th>Fecha</th>
               <th>Zona</th>
               <th>IP</th>
-              <th>Apellido y Nombre</th>
+              <th>Cliente</th>
               <th>Motivo</th>
               <th>Datos operador</th>
               <th>Respuesta</th>
@@ -49,12 +67,13 @@ require_once "../../Model/Cliente.php";
                 
             </tr>
           </thead>
-          <tbody>
+          <tbody  id="resultadoReclamos">
             <tr>
               <?php foreach($tickets as $dato ) {
               ?>
                <td style="visibility: hidden;"> <?php echo $dato->getid();?></td>
-              <td> <?php echo $dato->getfecha();?> </td>
+              <td > <div class="hideextra" >  <?php echo $dato->getfecha();?> 
+              </div></td>
               <td> <?php echo $dato->getcliente()->getzona();?> </td>
               <td><?php echo $dato->getip();?></td>
               <td> <?php echo $dato->getcliente()->getapellidoynombre();?> </td>
@@ -72,8 +91,9 @@ require_once "../../Model/Cliente.php";
         
           </tbody>
         </table>
+        
       </div>
-
+   
 
       <div id="modalReclamo" class="container" style="margin-top: 20px;" >
 
@@ -107,8 +127,8 @@ require_once "../../Model/Cliente.php";
 
 
    
-      </div>          
- 
+      </div>     
+
 <script>
 
     $.ajaxSetup ({  
@@ -116,14 +136,37 @@ require_once "../../Model/Cliente.php";
       });
     $( document ).ready(function() {
 
+  var ultimaFila = null;   
+  var row = -1;
+  var colorOriginal ;
+  var fondooriginal ;
+      
 
 
+    $('#tablaReclamos').find('tr').click(function(){
+  
+    row = $(this).find('td:first').text();
+    fondooriginal = 'white' ;
 
-       $("#btnnuevorecla").click(function(){
+    if (ultimaFila != null) {
+        ultimaFila.css('background-color', fondooriginal)
+        ultimaFila.css('color', colorOriginal)
+        }
+     if(row % 2 !== 0)fondooriginal ='black';   
+        colorOriginal = 'black';
+        $(this).css('background-color','#297D18');
+        $(this).css('color','white');
+        ultimaFila = $(this);
 
-      var loadUrl = "html/nuevoreclamo.html"; // paso parametro accion e id
-      $("#modalReclamo").load(loadUrl); // ejecuto
-      }); 
+   });
+
+    $("#btnnuevorecla").click(function(){
+
+    var loadUrl = "html/nuevoreclamo.html"; // paso parametro accion e id
+    $("#modalReclamo").load(loadUrl); 
+      });
+ 
+   
 
 
     $("#btnhistorialreclamos").click(function(){
@@ -132,92 +175,111 @@ require_once "../../Model/Cliente.php";
       $("#contenedorReclamo").load(loadUrl); // ejecuto
       }); 
 
-      
-
-    $('#tablaReclamos').find('tr').click(function(){
-   var row = $(this).find('td:first').text();
   
+            $("#btneditarReclamo").click(function(){
 
+              if(row!=-1){
 
-       $("#btneditarReclamo").one('click',function(){
-       var loadUrl = "php/ABM/Soporte/editarreclamo.php";
-        var data= { 'id' : row };
-          $.post(loadUrl, data ,function(result) { 
-          $("#modalReclamo").html(result);
-         });
-          
+                var loadUrl = "php/ABM/Soporte/editarreclamo.php";
+                var data= { 'id' : row };
+                $.post(loadUrl, data ,function(result) { 
+                $("#modalReclamo").html(result);
+                  });
+              row=-1;
+             // $('#tablaReclamos').DataTable().ajax.reload();
+              }else{ 
+                alert("Debe Seleccionar un reclamo a Editar");
+              }
+
         });
 
 
-          $("#btnverdiagnostico").one('click',function(){
-
-
-      var loadUrl = "php/ABM/Soporte/Diagnostico/verdiagnostico.php"; // paso parametro accion e id
-       var data= { 'id' : row };
-          $.post(loadUrl, data ,function(result) { 
-          $("#contenedorReclamo").html(result);
-         });
-       // ejecuto
-      }); 
+            $("#btnverdiagnostico").click(function(){
+              if(row!=-1){ 
+                var loadUrl = "php/ABM/Soporte/Diagnostico/verdiagnostico.php"; // paso parametro accion e id
+                var data= { 'id' : row };
+                $.post(loadUrl, data ,function(result) { 
+                $("#contenedorReclamo").html(result);
+                });
+              row=-1;
+              }else{ 
+                alert("Debe Seleccionar un reclamo para ver el Diagnostico");
+              }
+              }); 
 
       
-       $("#btndiagnosticar").one('click',function(){
+           $("#btndiagnosticar").click(function(){
+ 
+              if(row!=-1){ 
+                var loadUrl = "php/ABM/Soporte/Diagnostico/nuevodiagnostico.php"; // paso parametro accion e id
+                var data= { 'id' : row };
+                $.post(loadUrl, data ,function(result) { 
+                $("#modalReclamo").html(result);
+                });
+              row=-1;
+              }else{ 
+                 alert("Debe Seleccionar un reclamo a Diagnosticar");
+              }
+          }); 
 
-      var loadUrl = "php/ABM/Soporte/Diagnostico/nuevodiagnostico.php"; // paso parametro accion e id
-       var data= { 'id' : row };
-          $.post(loadUrl, data ,function(result) { 
-          $("#modalReclamo").html(result);
-         });
-       // ejecuto
-      }); 
+           $("#btncerrarticket").click(function(){
+             if(row!=-1){ 
+              var loadUrl = "php/ABM/Soporte/cerrarTicket.php"; // paso parametro accion e id
+               var data= { 'id' : row };
+              $.post(loadUrl, data ,function(result) { 
+              $("#contenedorReclamo").html(result);
+               }); 
 
-       $("#btncerrarticket").one('click',function(){
-
-      var loadUrl = "php/ABM/Soporte/cerrarTicket.php"; // paso parametro accion e id
-           var data= { 'id' : row };
-          $.post(loadUrl, data ,function(result) { 
-          $("#contenedorReclamo").html(result);
-      }); 
-    
-      }); 
-
-  }); 
-
+             row=-1;
+             }else{ 
+              alert("Debe Seleccionar un reclamo a Diagnosticar");
+              }
+          }); 
+       
+ 
+  
 
     $('#tablaReclamos').find('tr').dblclick(function(){
       var row = $(this).find('td:first').text();
-
       var loadUrl = "php/ABM/Soporte/editarreclamo.php";// paso parametro accion e id
-
-     
       var data= { 'id' : row };
       $.post(loadUrl, data ,function(result) { 
          $("#modalReclamo").html(result);
       });
+      row=-1;
+          
 
-       
- // alert('You clicked ' + row);
 });
 
 
+  
 
-     var ultimaFila = null;
-        var colorOriginal;
-        var fondooriginal;
-        $(Inicializar);
-        function Inicializar() {
-            $('#tablaReclamos tr').click(function () {
-                if (ultimaFila != null) {
-                    ultimaFila.css('background-color', colorOriginal)
-                    ultimaFila.css('color', fondooriginal)
-                }
-                colorOriginal = 'white';
-                fondooriginal = $(this).css('color');
-                $(this).css('background-color','#297D18');
-                  $(this).css('color','white');
-                ultimaFila = $(this);
-            });
+
+
+$('#tablaReclamos').DataTable( {
+        "language": {
+            "lengthMenu": "Cantidad de Registros _MENU_ ",
+            "zeroRecords": "Nothing found - sorry",
+            "info": "Viendo pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No records available",
+             "search": "Buscar:",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "paginate": {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous": "Anterior"
         }
+        }
+    } );
+
+
+      
+    
+
+     
+
+   
 
 
   }); 

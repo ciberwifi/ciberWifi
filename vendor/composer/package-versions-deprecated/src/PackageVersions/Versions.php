@@ -33,29 +33,38 @@ final class Versions
      * @internal
      */
     const VERSIONS          = array (
-  'composer/package-versions-deprecated' => '1.11.99.1@7413f0b55a051e89485c5cb9f765fe24bb02a7b6',
-  'doctrine/annotations' => '1.12.1@b17c5014ef81d212ac539f07a1001832df1b6d3b',
-  'doctrine/cache' => '1.10.2@13e3381b25847283a91948d04640543941309727',
-  'doctrine/collections' => '1.6.7@55f8b799269a1a472457bd1a41b4f379d4cfba4a',
-  'doctrine/common' => '3.1.2@a036d90c303f3163b5be8b8fde9b6755b2be4a3a',
-  'doctrine/dbal' => '2.13.0@67d56d3203b33db29834e6b2fcdbfdc50535d796',
+  'composer/package-versions-deprecated' => '1.11.99.4@b174585d1fe49ceed21928a945138948cb394600',
+  'doctrine/annotations' => '1.13.2@5b668aef16090008790395c02c893b1ba13f7e08',
+  'doctrine/cache' => '2.1.1@331b4d5dbaeab3827976273e9356b3b453c300ce',
+  'doctrine/collections' => '1.6.8@1958a744696c6bb3bb0d28db2611dc11610e78af',
+  'doctrine/common' => '3.2.0@6d970a11479275300b5144e9373ce5feacfa9b91',
+  'doctrine/dbal' => '3.1.4@821b4f01a36ce63ed36c090ea74767b72db367e9',
   'doctrine/deprecations' => 'v0.5.3@9504165960a1f83cc1480e2be1dd0a0478561314',
   'doctrine/event-manager' => '1.1.1@41370af6a30faa9dc0368c4a6814d596e81aba7f',
-  'doctrine/inflector' => '2.0.3@9cf661f4eb38f7c881cac67c75ea9b00bf97b210',
+  'doctrine/inflector' => '2.0.4@8b7ff3e4b7de6b2c84da85637b59fd2880ecaa89',
   'doctrine/instantiator' => '1.4.0@d56bf6102915de5702778fe20f2de3b2fe570b5b',
   'doctrine/lexer' => '1.2.1@e864bbf5904cb8f5bb334f99209b48018522f042',
-  'doctrine/orm' => '2.8.4@a588555ecd837b8d7e89355d9a13902e54d529c7',
-  'doctrine/persistence' => '2.1.0@9899c16934053880876b920a3b8b02ed2337ac1d',
-  'psr/container' => '1.1.1@8622567409010282b7aeebe4bb841fe98b58dcaf',
-  'symfony/console' => 'v5.2.6@35f039df40a3b335ebf310f244cb242b3a83ac8d',
-  'symfony/polyfill-ctype' => 'v1.22.1@c6c942b1ac76c82448322025e084cadc56048b4e',
-  'symfony/polyfill-intl-grapheme' => 'v1.22.1@5601e09b69f26c1828b13b6bb87cb07cddba3170',
-  'symfony/polyfill-intl-normalizer' => 'v1.22.1@43a0283138253ed1d48d352ab6d0bdb3f809f248',
-  'symfony/polyfill-mbstring' => 'v1.22.1@5232de97ee3b75b0360528dae24e73db49566ab1',
-  'symfony/polyfill-php73' => 'v1.22.1@a678b42e92f86eca04b7fa4c0f6f19d097fb69e2',
-  'symfony/polyfill-php80' => 'v1.22.1@dc3063ba22c2a1fd2f45ed856374d79114998f91',
-  'symfony/service-contracts' => 'v2.2.0@d15da7ba4957ffb8f1747218be9e1a121fd298a1',
-  'symfony/string' => 'v5.2.6@ad0bd91bce2054103f5eaa18ebeba8d3bc2a0572',
+  'doctrine/orm' => '2.10.2@81d472f6f96b8b571cafefe8d2fef89ed9446a62',
+  'doctrine/persistence' => '2.2.3@5e7bdbbfe9811c06e1f745d1c166647d5c47d6ee',
+  'mercadopago/dx-php' => '2.4.4@678f1e059309c5340f928df909e6b747caed2116',
+  'psr/cache' => '2.0.0@213f9dbc5b9bfbc4f8db86d2838dc968752ce13b',
+  'psr/container' => '1.1.2@513e0666f7216c7459170d56df27dfcefe1689ea',
+  'psr/log' => '3.0.0@fe5ea303b0887d5caefd3d431c3e61ad47037001',
+  'psr/simple-cache' => '3.0.0@764e0b3939f5ca87cb904f570ef9be2d78a07865',
+  'symfony/cache' => 'v5.3.12@fe05bcb21c1287401d96d066ada7ed881418c6a1',
+  'symfony/cache-contracts' => 'v2.5.0@ac2e168102a2e06a2624f0379bde94cd5854ced2',
+  'symfony/console' => 'v5.3.11@3e7ab8f5905058984899b05a4648096f558bfeba',
+  'symfony/deprecation-contracts' => 'v2.5.0@6f981ee24cf69ee7ce9736146d1c57c2780598a8',
+  'symfony/polyfill-ctype' => 'v1.23.0@46cd95797e9df938fdd2b03693b5fca5e64b01ce',
+  'symfony/polyfill-intl-grapheme' => 'v1.23.1@16880ba9c5ebe3642d1995ab866db29270b36535',
+  'symfony/polyfill-intl-normalizer' => 'v1.23.0@8590a5f561694770bdcd3f9b5c69dde6945028e8',
+  'symfony/polyfill-mbstring' => 'v1.23.1@9174a3d80210dca8daa7f31fec659150bbeabfc6',
+  'symfony/polyfill-php72' => 'v1.23.0@9a142215a36a3888e30d0a9eeea9766764e96976',
+  'symfony/polyfill-php73' => 'v1.23.0@fba8933c384d6476ab14fb7b8526e5287ca7e010',
+  'symfony/polyfill-php80' => 'v1.23.1@1100343ed1a92e3a38f9ae122fc0eb21602547be',
+  'symfony/service-contracts' => 'v2.5.0@1ab11b933cd6bc5464b08e81e2c5b07dec58b0fc',
+  'symfony/string' => 'v5.3.10@d70c35bb20bbca71fc4ab7921e3c6bda1a82a60c',
+  'symfony/var-exporter' => 'v5.3.11@b16fcf355b810bcbccc2c6eac1d016725dbf9002',
   '__root__' => '1.0.0+no-version-set@',
 );
 
@@ -71,7 +80,7 @@ final class Versions
      */
     public static function rootPackageName() : string
     {
-        if (!class_exists(InstalledVersions::class, false) || !InstalledVersions::getRawData()) {
+        if (!self::composer2ApiUsable()) {
             return self::ROOT_PACKAGE_NAME;
         }
 
@@ -89,7 +98,7 @@ final class Versions
      */
     public static function getVersion(string $packageName): string
     {
-        if (class_exists(InstalledVersions::class, false) && InstalledVersions::getRawData()) {
+        if (self::composer2ApiUsable()) {
             return InstalledVersions::getPrettyVersion($packageName)
                 . '@' . InstalledVersions::getReference($packageName);
         }
@@ -101,5 +110,26 @@ final class Versions
         throw new OutOfBoundsException(
             'Required package "' . $packageName . '" is not installed: check your ./vendor/composer/installed.json and/or ./composer.lock files'
         );
+    }
+
+    private static function composer2ApiUsable(): bool
+    {
+        if (!class_exists(InstalledVersions::class, false)) {
+            return false;
+        }
+
+        if (method_exists(InstalledVersions::class, 'getAllRawData')) {
+            $rawData = InstalledVersions::getAllRawData();
+            if (count($rawData) === 1 && count($rawData[0]) === 0) {
+                return false;
+            }
+        } else {
+            $rawData = InstalledVersions::getRawData();
+            if ($rawData === null || $rawData === []) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

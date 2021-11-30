@@ -14,6 +14,8 @@ require_once "../../../Model/Instalacion.php";
   cursor: pointer;
 }
 
+.hideextra { white-space: nowrap; overflow: hidden; text-overflow:ellipsis; }
+
 </style>
 
 <h4 style="margin-bottom: 20px;">Solicitudes Instalacion </h4>
@@ -49,7 +51,8 @@ require_once "../../../Model/Instalacion.php";
               <?php foreach($instalaciones as $dato ) {
               ?>
               <td style="visibility: hidden;"> <?php echo $dato->getid();?></td>
-              <td> <?php echo $dato->getfecha();?> </td>
+                 <td > <div class="hideextra" >  <?php echo $dato->getfecha();?> 
+              </div></td>
               <td><?php echo $dato->getzona();?></td>
               <td><?php echo $dato->getapellidoynombre();?></td>
               <td><?php echo $dato->getdni();?></td>
@@ -89,7 +92,7 @@ require_once "../../../Model/Instalacion.php";
               </td>
               <td>
             <td> 
-                <button  type="button" class="btn btn-success btn-sm" id="btnEliminarSolicitud"  data-bs-toggle="contenedorVentas" data-bs-target="#contenedorVentas" >Eliminar Solicitud</button>
+                <button  type="button" class="btn btn-success btn-sm" id="btnCerrarVenta"  data-bs-toggle="contenedorVentas" data-bs-target="#contenedorVentas" >Archivar Solicitud</button>
               </td>
             
                <td>
@@ -98,7 +101,7 @@ require_once "../../../Model/Instalacion.php";
                
 
                <td>
-                <button type="button" class="btn btn-success btn-sm" id="btnCerrarVenta"  data-bs-toggle="contenedorVentas" data-bs-target="#contenedorVentas" >Instalacion Realizada!</button>
+                <button type="button" class="btn btn-success btn-sm" id="btnInstalacionRealizada"  data-bs-toggle="contenedorVentas" data-bs-target="#contenedorVentas" >Instalacion Realizada!</button>
               </td>
                 <td>
                 <button type="button" class="btn btn-success btn-sm" id="btnHistorialVentas"  data-bs-toggle="contenedorVentas" data-bs-target="#contenedorVentas" >Historial</button>
@@ -140,14 +143,21 @@ require_once "../../../Model/Instalacion.php";
              });
         });
 
-      $("#btnCerrarVenta").one('click',function(){
-      var loadUrl = "php/ABM/Ventas/cerrarVenta.php"; // paso parametro accion e id
+      $("#btnInstalacionRealizada").one('click',function(){
+      var loadUrl = "php/ABM/Ventas/instalacionRealizada.php"; // paso parametro accion e id
            var data= { 'id' : row };
           $.post(loadUrl, data ,function(result) { 
           $("#contenedorVentas").html(result);
       }); 
     });
 
+         $("#btnCerrarVenta").one('click',function(){
+      var loadUrl = "php/ABM/Ventas/cerrarVenta.php"; // paso parametro accion e id
+           var data= { 'id' : row };
+          $.post(loadUrl, data ,function(result) { 
+          $("#contenedorVentas").html(result);
+      }); 
+    });
 
 
   }); 

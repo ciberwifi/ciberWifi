@@ -71,24 +71,29 @@
          });
 
     $( document ).ready(function() {
-
-         $('#modalreclamo').modal('show');
+ 
+        $('#modalreclamo').modal('show');
 
 
        
     
 
-         $("#btnguardar2").click(function(){
+      $("#btnguardar2").click(function(){
+      var datosForm = $("#formreclamo").serializeArray();
+      datosForm.push({name: "id", value: -1});
+            $.ajax({
+            url:'php/ABM/Soporte/altareclamo.php',
+            type:'POST',
+            data: datosForm,
+              success:function(vs){
+                  alert(vs);
+                  $('#modalreclamo').modal('hide');
+                
+         $('#tablaReclamos').load('php/Tablas/resultadoReclamos.php #tablaReclamos');
+           }
+            })  
 
-      var loadUrl = "php/ABM/Soporte/altareclamo.php";// paso parametro accion e id
-      var data = $("#formreclamo").serializeArray();
-      data.push({name: "id", value: -1});
-     
-      $.post(loadUrl, $.param(data) ,function(result) { 
-         $("#resultado10").html(result);
-      });
-      });  
-
+        });
 
 
 

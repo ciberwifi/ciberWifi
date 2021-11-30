@@ -23,9 +23,10 @@ require_once "../../../Model/Instalacion.php";
 
       <div class="tabla table-responsive">
         <?php
+     $instalaciones1 = $entityManager->getRepository('Instalacion')->findBy(array('estado' => 'realizada'));  
+     $instalaciones2 = $entityManager->getRepository('Instalacion')->findBy(array('estado' => 'cerrada'));
+       $instalaciones=array_merge($instalaciones1,$instalaciones2);
        
-     $instalaciones = $entityManager->getRepository('Instalacion')->findBy(array('estado' => 'cerrado'));
-
         ?>
 
        

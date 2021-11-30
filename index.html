@@ -11,6 +11,7 @@
   <script src="js/external/jquery/jquery.js"></script>
  <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>
+  
 
  </head>
     
@@ -57,11 +58,23 @@
 <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Soporte</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" id="btnnuevoreclamo" href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo Reclamo</a>
+              <li><a class="dropdown-item" id="btnnuevoreclamo" href="#" type="button" class="btn btn-primary" >Nuevo Reclamo</a>
               </li>
               <li><a class="dropdown-item" id="btnreclamos" href="#">Reclamos Ingresados</a></li>
               <li><a class="dropdown-item" id="btnverdiagnosticos" href="#">Diagnosticos</a></li>
               <li><a class="dropdown-item" id="btnVisitasTecnicas" href="#">Visitas Tecnicas</a></li>
+            </ul>
+
+ </li>
+
+<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Bajas y Recupero</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li><a class="dropdown-item" id="btnnuevabaja" href="#" type="button" class="btn btn-primary" >Nueva Solicitud Baja</a>
+              </li>
+              <li><a class="dropdown-item" id="btnrbajasingresadas" href="#">Bajas Ingresadas</a></li>
+              <li><a class="dropdown-item" id="btnretirosyrecupero" href="#">Retiros y Recupero</a></li>
+              
             </ul>
 
  </li>
@@ -91,6 +104,11 @@
 
 
 
+<div id="modalHome" class="container" style="margin-top: 20px;" >
+
+
+   
+</div>
 
 <div id="resultado" class="container" style="margin-top: 20px;" >
 
@@ -137,7 +155,7 @@
    $("#btnnuevoreclamo").click(function(){
 
       var loadUrl = "html/nuevoreclamo.html"; // paso parametro accion e id
-      $("#resultado").load(loadUrl); // ejecuto
+      $("#modalHome").load(loadUrl); // ejecuto
       }); 
 
  $("#btnreclamos").click(function(){
@@ -155,14 +173,14 @@
 
  $("#btnVisitasTecnicas").click(function(){
 
-      var loadUrl = "php/ABM/Soporte/VisitaTecnica/resultadoVisitaTecnica.php"; // paso parametro accion e id
+      var loadUrl = "php/ABM/Soporte/VisitaTecnica/tablaVisitaTecnica.php"; // paso parametro accion e id
       $("#resultado").load(loadUrl); // ejecuto
       });
 
   $("#btnnuevainstal").click(function(){
 
       var loadUrl = "html/nuevaInstal.html";
-      $("#resultado").load(loadUrl); // ejecuto
+      $("#modalHome").load(loadUrl); // ejecuto
       });
 
  $("#btnslinstal").click(function(){
@@ -174,7 +192,7 @@
 $("#btnnuevoinbox").click(function(){
 
       var loadUrl = "html/nuevoinbox.html";
-      $("#resultado").load(loadUrl); // ejecuto
+      $("#modalHome").load(loadUrl); // ejecuto
       });
 
 
@@ -184,12 +202,38 @@ $("#btnnuevoinbox").click(function(){
       $("#resultado").load(loadUrl); // ejecuto
       });
 
+
+
+   $("#btnnuevabaja").click(function(){
+
+      var loadUrl = "html/nuevaBaja.html"; // paso parametro accion e id
+      $("#modalHome").load(loadUrl); // ejecuto
+      }); 
+
+     $("#btnrbajasingresadas").click(function(){
+
+      var loadUrl = "php/ABM/Cliente/Baja/resultadoBajas.php"; // paso parametro accion e id
+      $("#resultado").load(loadUrl); // ejecuto
+      });
+
+ $("#btnretirosyrecupero").click(function(){
+
+      var loadUrl = "php/ABM/Cliente/Baja/retirosyrecupero.php"; // paso parametro accion e id
+      $("#resultado").load(loadUrl); // ejecuto
+      });      
+
 }); 
 
 
 
 </script>
 
+
+ <footer class="pt-5 my-5 text-muted border-top" style=" margin:1%;  ">
+  <a  href="#"><img src="logo.jpg" /></a>   
+   CiberWifi &middot; &copy; 2021
+  </footer> 
+  
 </body> 
 
 </html>

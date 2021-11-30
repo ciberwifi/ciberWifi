@@ -10,17 +10,38 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-       
+      
+    
+
+
      <div class="modal-body">
-         <div class="input-group mb-3">
+         <div class="input-group mb-3" >
      <span class="input-group-text" id="basic-addon1">Destinatario</span>
-     <input id="impzona" name="impzona" type="text" class="form-control" placeholder="Lafe" aria-label="Username" aria-describedby="basic-addon1">
+     <input id="impdestinatario" name="impdestinatario" type="text" class="form-control" placeholder="Laura" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+       
+         <div class="input-group mb-3" >
+     <span class="input-group-text" id="basic-addon1">Asunto</span>
+     <input id="impasunto" name="impasunto" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
         </div>
         
+        <div id="sectormensaje" class="input-group "  style=" margin-bottom: 5%;">
+        <select id="selectsector" name="selectsector" class="form-select" aria-label="Default select example">
+          <option selected>Sector</option>
+          <option value="AtencionAlCliente">Atencion al Cliente</option>
+          <option value="Soporte">Soporte</option>
+          <option value="Cobranzas">Cobranzas</option>
+          <option value="Infraestructura">Infraestructura</option>
+          <option value="BajasRetiros">Bajas y Retiros</option>
+          
+        </select>
+
+        </div>
 
 <div class="input-group">
   <span class="input-group-text">Mensaje</span>
-  <textarea class="form-control" aria-label="With textarea" name="observaciones"></textarea>
+  <textarea class="form-control" aria-label="With textarea" name="mensaje"></textarea>
 </div>
 
       </div>
