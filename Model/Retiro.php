@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="bajas")
+ * @ORM\Table(name="retiros")
  */
-Class Bajas {
+Class Retiro {
     // Declaración de una propiedad
 
 
@@ -20,7 +20,7 @@ Class Bajas {
      */
     protected $id;
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date",nullable=true)
      */
 	private $fecha;  
 
@@ -47,29 +47,43 @@ Class Bajas {
      */
     private $macwan;
     /**
-     * @ORM\Column(type="boolean",  nullable=true)
+     * @ORM\Column(type="string",  nullable=true)
      */
     private $wifi;
    /**
-     * @ORM\Column(type="boolean",  nullable=true)
+     * @ORM\Column(type="string",  nullable=true)
      */
 	private $estabilizador;
 	/**
-     * @ORM\Column(type="boolean",  nullable=true)
+     * @ORM\Column(type="string",  nullable=true)
      */
     private $antena;
     
-
+       /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $estado;
+    
 
 
 
 	
 
-    
+public function getid()
+{
+return $this->id;
+}    
     
 public function getfecha()
 {
-return $this->fecha->format('y-m-d');
+
+if(!(is_null($this->fecha))) {
+   
+return $this->fecha->format('Y-m-d');
+}else{
+return "S/F";    
+}
+
 }
 
 public function getzona()
@@ -111,14 +125,26 @@ public function getwifi()
 return $this->wifi;
 }
 
+public function getestado()
+{
+return $this->estado;
+}
 
 
 public function setfecha($fecha)
 {
- $fechaTrunk=explode(" ", $fecha);  
- $fechaArray=explode("/", $fechaTrunk[0]);   
+
+$fechaTrunk=explode("-", $fecha);  
+
+if(count($fechaTrunk)>1){
+
+
 $this->fecha = new DateTime();
-$this->fecha->setDate($fechaArray[2], $fechaArray[1],$fechaArray[0]);
+$dia=01;
+$mes=$fechaTrunk[0];
+$año="20".$fechaTrunk[1];
+$this->fecha->setDate($año, $mes, $dia);
+}    
 }
 
 public function setzona($zona)
@@ -164,6 +190,10 @@ $this->wifi=$wifi;
 }
 
 
+public function setestado($estado)
+{
+$this->estado=$estado;
+}
 
 
 

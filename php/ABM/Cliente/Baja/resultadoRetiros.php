@@ -3,7 +3,7 @@
 
 
 require_once "../../../../bootstrap.php";
-require_once "../../../../Model/Retiro.php";
+require_once "../../../../Model/Bajas.php";
 require_once "../../../../Model/Cliente.php";
 require_once "../../../../Model/Ticket.php";
 
@@ -36,17 +36,17 @@ require_once "../../../../Model/Ticket.php";
 </style>
 <body>
 
-<h5 style="margin-bottom: 30px; margin-left: -5%;">Bajas y Recupero: Retiros y Recupero</h4>
+<h4 style="margin-bottom: 30px; margin-left: -5%;">Bajas Ingresadas</h4>
 
 <span class="border-bottom"></span>
 
-
-      <div class="table-responsive"  style="margin-top:5%;margin-left: -3%;">
+   
+      <div class="table-responsive"  style="margin-left: -3%;">
         
 
-        <table id="tablaRetiros" class="table table-striped table-sm  align-middle" >
+        <table id="tablaBajas" class="table table-striped table-sm  align-middle" >
             <?php
-        $bajas = $entityManager->getRepository('Retiro')->findall();
+        $bajas = $entityManager->getRepository('Bajas')->findall();
         
         ?>
           <thead>
@@ -55,32 +55,28 @@ require_once "../../../../Model/Ticket.php";
 
               <th>Fecha</th>
               <th>Zona</th>
-              <th>Apellido y Nombre</th>
-              <th>Direccion</th>
-              <th>Tel</th>
-              <th>Mac</th>
-              <th>Wifi</th>
-              <th>Estabilizador</th>
-              <th>Antena</th>
+              <th>IP</th>
+              <th>Cliente</th>
+              <th>Motivo</th>
+              <th>Datos operador</th>
+              <th>Disponibilidad Retiro</th>
               <th>Estado</th>
                 
             </tr>
           </thead>
-          <tbody  id="resultadoRetiros">
+          <tbody  id="resultadoBajas">
             <tr>
               <?php foreach($bajas as $dato ) {
               ?>
                <td style="visibility: hidden;"> <?php echo $dato->getid();?></td>
               <td > <div class="hideextra" >  <?php echo $dato->getfecha();?> 
               </div></td>
-              <td> <?php echo $dato->getzona();?> </td>
-              <td> <?php echo $dato->getapellidoynombre();?> </td>
-              <td><?php echo $dato->getdireccion();?></td>
-              <td><?php echo $dato->gettel();?></td>
-              <td><?php echo $dato->getmacwan();?></td>
-              <td><?php echo $dato->getwifi();?></td>
-              <td><?php echo $dato->getestabilizador();?></td>
-              <td><?php echo $dato->getantena();?></td>
+              <td> <?php echo $dato->getcliente()->getzona();?> </td>
+              <td><?php echo $dato->getip();?></td>
+              <td> <?php echo $dato->getcliente()->getapellidoynombre();?> </td>
+              <td><?php echo $dato->getmotivo();?></td>
+              <td><?php echo $dato->getobservaciones();?></td>
+              <td><?php echo $dato->getdisponibilidad();?></td>
               <td><?php echo $dato->getestado();?></td>
              
               </tr>
@@ -133,7 +129,7 @@ require_once "../../../../Model/Ticket.php";
       
 
 
-    $('#tablaRetiros').find('tr').click(function(){
+    $('#tablaBajas').find('tr').click(function(){
   
     row = $(this).find('td:first').text();
     fondooriginal = 'white' ;
@@ -229,7 +225,7 @@ require_once "../../../../Model/Ticket.php";
 
 
 
-$('#tablaRetiros').DataTable( {
+$('#tablaBajas').DataTable( {
         "language": {
             "lengthMenu": "Cantidad de Registros _MENU_ ",
             "zeroRecords": "Nothing found - sorry",
