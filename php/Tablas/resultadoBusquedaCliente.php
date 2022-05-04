@@ -86,6 +86,7 @@ if (sizeof($clientes) === 0) {
               <th>Email</th>
               <th>Link MP</th>
               <th>Plan</th>
+               <th>Saldo</th>
             </tr>
           </thead>
          
@@ -100,8 +101,8 @@ if (sizeof($clientes) === 0) {
               <td><?php echo $cliente->gettel();?></td>
                 <td><?php echo $cliente->getemail();?></td>
               <td><?php echo $cliente->getlinkPago();?></td>
-              <td><?php echo "$".$cliente->getidplan()->getmonto();?></td>
-              
+              <td><?php echo "$".$cliente->getsuscripcion()->getidplan()->getmonto();?></td>
+              <td><?php echo "$".$cliente->getsuscripcion()->getsaldo();?></td>
             </tr>
             <?php } ?>
       

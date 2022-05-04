@@ -3,9 +3,9 @@
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-require  "Conexion.php";
-require  "Plan.php";
-
+require_once  "Conexion.php";
+require_once  "Plan.php";
+require_once  "Suscripcion.php";
 /**
  * @ORM\Entity
  * @ORM\Table(name="clientes")
@@ -82,6 +82,12 @@ Class Cliente {
      */
     private $idip;
 
+    /**
+
+     *@ORM\OneToOne(targetEntity="Suscripcion", cascade={"persist", "remove"})
+     */
+    private $idsuscripcion;
+
    
 
     // Declaración de un método
@@ -156,6 +162,11 @@ public function getbaja()
 return $this->baja;
 } 
 
+public function getsuscripcion()
+{
+return $this->idsuscripcion;
+} 
+
 public function setzona($zona)
 {
 $this->zona=$zona;
@@ -221,10 +232,17 @@ public function setbaja($baja)
 $this->baja=$baja;
 }
 
+public function setsuscripcion($suscripcion)
+{
+$this->idsuscripcion=$suscripcion;
+} 
+
 public function addticket($ticket)
 {
 $this->tickets->add($ticket);
 $ticket->setcliente($this);
+
+
 
 }
 public function getalltickets()

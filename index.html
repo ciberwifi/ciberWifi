@@ -49,9 +49,10 @@
 <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Cobranzas</a>
         <ul class="dropdown-menu" aria-labelledby="dropdown01">
-          <li><a class="dropdown-item" id="btndisputas" href="#">Disputas</a></li>
-          <li><a class="dropdown-item" href="#">Solicitar Bonificacion</a></li>
-          <li><a class="dropdown-item" href="#">Compromisos pago</a></li>
+            <li><a class="dropdown-item" id="btndeudores" href="#">Deudores</a></li>
+            <li><a class="dropdown-item" id="btnpagoManual" href="#">Pago Manual</a></li>
+            <li><a class="dropdown-item" id="btnresumen" href="#">Resumen</a></li>
+              <li><a class="dropdown-item" id="btnestadisticas" href="#">Estadisticas</a></li>
         </ul>
       </li>
 
@@ -150,7 +151,45 @@
     }
   });
 
+//ABM VENTAS
 
+  $("#btnnuevainstal").click(function(){
+
+      var loadUrl = "html/nuevaInstal.html";
+      $("#modalHome").load(loadUrl); // ejecuto
+      });
+
+   $("#btnslinstal").click(function(){
+
+      var loadUrl = "php/ABM/Ventas/tablaSolicitudesInstalacion.php";
+      $("#resultado").load(loadUrl); // ejecuto
+      });
+
+//ABM COBRANZAS
+
+
+   $("#btndeudores").click(function(){
+
+      var loadUrl = "php/ABM/Cobranzas/resultadoDeudores.php";
+      $("#resultado").load(loadUrl); // ejecuto
+      });
+
+
+   $("#btnestadisticas").click(function(){
+
+      var loadUrl = "php/ABM/Cobranzas/resultadoEstadisticas.php";
+      $("#resultado").load(loadUrl); // ejecuto
+      });
+
+
+
+   $("#btnpagoManual").click(function(){
+
+      var loadUrl = "html/nuevaPagoManual.html";
+      $("#modalHome").load(loadUrl); // ejecuto
+      });
+
+//ABM RECLAMOS
 
    $("#btnnuevoreclamo").click(function(){
 
@@ -177,17 +216,6 @@
       $("#resultado").load(loadUrl); // ejecuto
       });
 
-  $("#btnnuevainstal").click(function(){
-
-      var loadUrl = "html/nuevaInstal.html";
-      $("#modalHome").load(loadUrl); // ejecuto
-      });
-
- $("#btnslinstal").click(function(){
-
-      var loadUrl = "php/ABM/Ventas/tablaSolicitudesInstalacion.php";
-      $("#resultado").load(loadUrl); // ejecuto
-      });
 
 $("#btnnuevoinbox").click(function(){
 
